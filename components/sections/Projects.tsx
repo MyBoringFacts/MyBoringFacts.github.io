@@ -1,7 +1,9 @@
+
 'use client'
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useState } from 'react'
 
 interface Project {
@@ -11,6 +13,8 @@ interface Project {
   image: string
   github: string
   huggingface: string | null
+  detailsPath?: string
+  featured?: boolean
 }
 
 const projects: Project[] = [
@@ -21,6 +25,8 @@ const projects: Project[] = [
     image: 'https://via.placeholder.com/600x300/1a1a1a/3b82f6?text=Video+Face+Search',
     github: 'https://github.com/MyBoringFacts',
     huggingface: null,
+    detailsPath: '/projects/find-me-in-the-crowd',
+    featured: true,
   },
   {
     title: 'SimpleRAG - Document AI Assistant',
@@ -82,7 +88,7 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              className="project-card"
+              className={`project-card ${project.featured ? 'border-2 border-[#FFD700] shadow-[0_0_20px_rgba(255,215,0,0.3)]' : ''}`}
             >
               {/* Project Image */}
               <div className="relative h-56 overflow-hidden rounded-t-2xl bg-[#1a1a1a]">
@@ -95,7 +101,7 @@ export default function Projects() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-500 hover:scale-105"
+                    className="object-cover"
                     onError={() =>
                       setImageErrors((prev) => ({ ...prev, [index]: true }))
                     }
@@ -106,9 +112,16 @@ export default function Projects() {
 
               {/* Project Content */}
               <div className="p-6">
-                <h3 className="text-2xl font-bold mb-3 text-white">
-                  {project.title}
-                </h3>
+                <div className="flex items-center gap-3 mb-3">
+                  <h3 className="text-2xl font-bold text-white">
+                    {project.title}
+                  </h3>
+                  {project.featured && (
+                    <span className="px-3 py-1 bg-[#FFD700]/20 text-[#FFD700] rounded-md text-xs font-semibold border border-[#FFD700]/40">
+                      Featured
+                    </span>
+                  )}
+                </div>
                 <p className="text-gray-400 mb-6 leading-relaxed">
                   {project.description}
                 </p>
@@ -126,7 +139,15 @@ export default function Projects() {
                 </div>
 
                 {/* Links */}
-                <div className="flex gap-4 pt-4 border-t border-white/5">
+                <div className="flex gap-4 pt-4 border-t border-white/5 flex-wrap">
+                  {project.detailsPath && (
+                    <Link
+                      href={project.detailsPath}
+                      className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+                    >
+                      <span>View Details</span>
+                    </Link>
+                  )}
                   <a
                     href={project.github}
                     target="_blank"

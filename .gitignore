@@ -24,7 +24,7 @@ Thumbs.db
 # Build artifacts / coverage
 coverage/
 dist/
-
+temp/
 # Vercel
 .vercel/
 

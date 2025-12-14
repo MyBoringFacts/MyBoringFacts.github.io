@@ -64,6 +64,15 @@ export default function About() {
                 &ldquo;You already know about my past. As an exchange, I want to witness your future.&rdquo; — Elysia
               </p>
             </div>
+            <div className="mt-6 pt-4">
+              <a 
+                href="/resume.pdf" 
+                download="Thadoe_Hein_Resume.pdf"
+                className="btn-secondary text-base px-8 py-4 inline-block"
+              >
+                Download My Resume
+              </a>
+            </div>
           </motion.div>
 
           {/* Education & Experience */}
