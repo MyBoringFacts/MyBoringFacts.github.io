@@ -198,8 +198,8 @@ export default function FindMeInTheCrowdPage() {
                 </h2>
               </div>
               <p className="text-xl text-gray-200 mb-10 leading-relaxed">
-                Traditional video retrieval methods are insufficient for visual content where the primary query is a person's identity. 
-                Keyword-based search and manual video scrubbing do not scale to large archives. This represents a <em className="text-white">"data-rich, information-poor"</em> 
+                Traditional video retrieval methods are insufficient for visual content where the primary query is a person&apos;s identity. 
+                Keyword-based search and manual video scrubbing do not scale to large archives. This represents a <em className="text-white">&quot;data-rich, information-poor&quot;</em> 
                 paradox: substantial valuable content exists, but effective retrieval mechanisms are lacking.
               </p>
               
@@ -678,7 +678,7 @@ export default function FindMeInTheCrowdPage() {
                     <div>
                       <h4 className="text-lg font-semibold text-white mb-2">User Experience Enhancement</h4>
                       <p className="text-gray-200">
-                        Raw AI outputs can be fragmented and difficult to interpret. By implementing <strong className="text-white">"Contextual User Windows"</strong> 
+                        Raw AI outputs can be fragmented and difficult to interpret. By implementing <strong className="text-white">&quot;Contextual User Windows&quot;</strong> 
                         (temporal buffering), discrete detection points were transformed into coherent, watchable video segments suitable for user consumption.
                       </p>
                     </div>
@@ -719,7 +719,7 @@ export default function FindMeInTheCrowdPage() {
                     of computer vision and vector database technologies.
                   </p>
                   <p>
-                    The system's architecture, performance characteristics, and user experience design represent a comprehensive approach to 
+                    The system&apos;s architecture, performance characteristics, and user experience design represent a comprehensive approach to 
                     solving real-world problems through systematic engineering and careful technology selection.
                   </p>
                 </div>
