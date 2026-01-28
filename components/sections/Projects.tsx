@@ -57,11 +57,11 @@ const projects: Project[] = [
 export default function Projects() {
   const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({})
   const placeholderGradients = [
-    // Soft pastel, iridescent-like blends
-    'from-[#fde2e4] via-[#e0f2fe] to-[#f3e8ff]',
-    'from-[#e0f2fe] via-[#e9d5ff] to-[#ffe4e6]',
-    'from-[#ccfbf1] via-[#fef9c3] to-[#fde68a]',
-    'from-[#f5d0fe] via-[#d1fae5] to-[#bfdbfe]',
+    // Neutral grayscale gradients
+    'from-[#ffffff] via-[#f5f5f5] to-[#e5e5e5]',
+    'from-[#f9fafb] via-[#e5e5e5] to-[#d4d4d4]',
+    'from-[#f5f5f5] via-[#e5e5e5] to-[#d4d4d4]',
+    'from-[#f9fafb] via-[#e5e5e5] to-[#cccccc]',
   ]
   return (
     <section className="py-32 px-6 md:px-12 lg:px-20 border-t border-white/5">
@@ -74,7 +74,7 @@ export default function Projects() {
           className="mb-24"
         >
           <h2 className="section-title text-center mb-6">Featured Projects</h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto text-center leading-relaxed">
+          <p className="text-xl max-w-3xl mx-auto text-center leading-relaxed transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>
             End-to-end ML systems from Computer Vision to NLP and Generative AI
           </p>
         </motion.div>
@@ -88,10 +88,10 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.2 }}
-              className={`project-card ${project.featured ? 'border-2 border-[#FFD700] shadow-[0_0_20px_rgba(255,215,0,0.3)]' : ''}`}
+              className={`project-card ${project.featured ? 'border-2 border-black shadow-[0_0_20px_rgba(0,0,0,0.25)]' : ''}`}
             >
               {/* Project Image */}
-              <div className="relative h-56 overflow-hidden rounded-t-2xl bg-[#1a1a1a]">
+              <div className="relative h-56 overflow-hidden rounded-t-2xl bg-white">
                 {imageErrors[index] ? (
                   <div
                     className={`w-full h-56 bg-gradient-to-br ${placeholderGradients[index % placeholderGradients.length]}`}
@@ -107,22 +107,26 @@ export default function Projects() {
                     }
                   />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>
 
               {/* Project Content */}
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-3">
-                  <h3 className="text-2xl font-bold text-white">
+                  <h3 className="text-2xl font-bold transition-colors duration-500" style={{ color: 'var(--text-primary)' }}>
                     {project.title}
                   </h3>
                   {project.featured && (
-                    <span className="px-3 py-1 bg-[#FFD700]/20 text-[#FFD700] rounded-md text-xs font-semibold border border-[#FFD700]/40">
+                    <span className="px-3 py-1 rounded-md text-xs font-semibold transition-colors duration-500" style={{ 
+                      backgroundColor: 'rgb(var(--accent-1) / 0.2)', 
+                      color: 'rgb(var(--accent-1))',
+                      border: '1px solid rgb(var(--accent-1) / 0.4)'
+                    }}>
                       Featured
                     </span>
                   )}
                 </div>
-                <p className="text-gray-400 mb-6 leading-relaxed">
+                <p className="mb-6 leading-relaxed transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>
                   {project.description}
                 </p>
 
@@ -131,7 +135,12 @@ export default function Projects() {
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 bg-white/5 text-gray-400 rounded-md text-xs border border-white/10"
+                      className="px-3 py-1 rounded-md text-xs transition-all duration-500"
+                      style={{ 
+                        background: 'var(--glass-bg)',
+                        color: 'var(--text-secondary)',
+                        border: '1px solid var(--border-color)'
+                      }}
                     >
                       {tech}
                     </span>
@@ -139,11 +148,12 @@ export default function Projects() {
                 </div>
 
                 {/* Links */}
-                <div className="flex gap-4 pt-4 border-t border-white/5 flex-wrap">
+                <div className="flex gap-4 pt-4 flex-wrap transition-colors duration-500" style={{ borderTop: '1px solid var(--border-color)' }}>
                   {project.detailsPath && (
                     <Link
                       href={project.detailsPath}
-                      className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+                      className="flex items-center gap-2 text-sm transition-colors duration-500 hover:opacity-80"
+                      style={{ color: 'var(--text-secondary)' }}
                     >
                       <span>View Details</span>
                     </Link>
@@ -152,7 +162,8 @@ export default function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+                    className="flex items-center gap-2 text-sm transition-colors duration-500 hover:opacity-80"
+                    style={{ color: 'var(--text-secondary)' }}
                   >
                     <span>GitHub</span>
                   </a>
@@ -161,7 +172,8 @@ export default function Projects() {
                       href={project.huggingface}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors text-sm"
+                      className="flex items-center gap-2 text-sm transition-colors duration-500 hover:opacity-80"
+                      style={{ color: 'var(--text-secondary)' }}
                     >
                       <span>HuggingFace</span>
                     </a>

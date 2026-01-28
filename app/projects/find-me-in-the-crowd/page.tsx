@@ -5,6 +5,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 export default function FindMeInTheCrowdPage() {
@@ -41,7 +42,10 @@ export default function FindMeInTheCrowdPage() {
   }
 
   return (
-    <main className="relative min-h-screen">
+    <main
+      className="relative min-h-screen case-study"
+      style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)' }}
+    >
       {/* Navigation */}
       <motion.nav
         initial={{ y: -100, opacity: 0 }}
@@ -114,6 +118,9 @@ export default function FindMeInTheCrowdPage() {
               { id: 'stack', label: 'Technology Stack' },
               { id: 'deployment', label: 'Deployment' },
               { id: 'performance', label: 'Performance' },
+              { id: 'architecture-diagram', label: 'Architecture Diagram' },
+              { id: 'privacy', label: 'Privacy & Ethics' },
+          
               { id: 'conclusion', label: 'Conclusion' },
             ].map((item) => (
               <button
@@ -659,6 +666,25 @@ export default function FindMeInTheCrowdPage() {
                 </div>
               </div>
 
+              <div className="glass p-7 rounded-2xl border border-[#FFD700]/40 bg-gradient-to-br from-[#FFD700]/10 to-transparent mb-8">
+                <h3 className="text-2xl font-bold mb-4 text-[#FFD700]">
+                  Key Engineering Decisions
+                </h3>
+                <div className="space-y-4">
+                  <div>
+                    <p className="text-lg font-semibold text-white mb-2">Trade-off: Accuracy vs. Performance</p>
+                    <p className="text-gray-200 mb-3">
+                      <strong className="text-white">Accepted 15-20% accuracy loss to achieve ~90% speed improvement.</strong>
+                    </p>
+                    <p className="text-gray-300 text-sm">
+                      <strong className="text-gray-200">Reasoning:</strong> For this use case, recall mattered more than precision because users could visually 
+                      confirm results, allowing aggressive speed optimizations. The slight reduction in accuracy was acceptable given the substantial 
+                      performance gains and the ability for users to validate results manually.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               <div className="glass p-7 rounded-2xl border border-white/20 bg-gradient-to-br from-white/5 to-transparent">
                 <h3 className="text-2xl font-bold mb-6 text-white">
                   Engineering Solutions
@@ -689,6 +715,98 @@ export default function FindMeInTheCrowdPage() {
           </motion.div>
         </section>
 
+        {/* System Architecture Diagram */}
+        <section id="architecture-diagram" className="mb-32 scroll-mt-32">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="glass-card p-10 md:p-12">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#5FF7FF] to-[#B478FF] flex items-center justify-center">
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-white">
+                  System Architecture Diagram
+                </h2>
+              </div>
+              <div className="relative w-full aspect-video rounded-xl overflow-hidden border border-white/10">
+                <Image
+                  src="/FindMeInTheCrowdPage.png"
+                  alt="Find Me In The Crowd System Architecture Diagram"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Privacy & Ethical Safeguards */}
+        <section id="privacy" className="mb-32 scroll-mt-32">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="glass-card p-10 md:p-12">
+              <div className="flex items-center gap-4 mb-8">
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#FF63B0] to-[#5FF7FF] flex items-center justify-center">
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-white">
+                  Privacy and Ethical Safeguards
+                </h2>
+              </div>
+              <p className="text-xl text-gray-200 mb-10 leading-relaxed">
+                The system implements comprehensive privacy protections and ethical safeguards in compliance with PDPA and GDPR regulations. 
+                The following technical measures ensure user data protection:
+              </p>
+
+              <div className="space-y-6">
+                <div className="glass p-6 rounded-2xl border border-[#5FF7FF]/30 bg-gradient-to-br from-[#5FF7FF]/5 to-transparent">
+                  <h3 className="text-xl font-bold mb-3 text-[#5FF7FF]">Explicit Consent Management</h3>
+                  <p className="text-gray-200">
+                    The system implements explicit user and administrator consent flows. Users must provide informed consent before their 
+                    images are processed, and administrators must acknowledge data handling policies before accessing the system.
+                  </p>
+                </div>
+
+                <div className="glass p-6 rounded-2xl border border-[#FF63B0]/30 bg-gradient-to-br from-[#FF63B0]/5 to-transparent">
+                  <h3 className="text-xl font-bold mb-3 text-[#FF63B0]">Data Isolation</h3>
+                  <p className="text-gray-200">
+                    <strong className="text-white">No cross-event identity linking:</strong> The system is designed to prevent identity 
+                    correlation across different events. Each event maintains isolated data stores, ensuring that facial recognition data 
+                    from one event cannot be linked to identities in another event.
+                  </p>
+                </div>
+
+                <div className="glass p-6 rounded-2xl border border-[#B478FF]/30 bg-gradient-to-br from-[#B478FF]/5 to-transparent">
+                  <h3 className="text-xl font-bold mb-3 text-[#B478FF]">Minimal Data Storage</h3>
+                  <p className="text-gray-200">
+                    <strong className="text-white">Embeddings stored without raw images:</strong> After processing, only vector embeddings 
+                    are retained in the database. Original images are not stored, reducing privacy risks and storage requirements. Raw 
+                    video files remain in secure, access-controlled storage with time-limited access.
+                  </p>
+                </div>
+
+                <div className="glass p-6 rounded-2xl border border-[#5FF7FF]/30 bg-gradient-to-br from-[#5FF7FF]/5 to-transparent">
+                  <h3 className="text-xl font-bold mb-3 text-[#5FF7FF]">Data Deletion Capabilities</h3>
+                  <p className="text-gray-200">
+                    The system provides manual data deletion features that allow users and administrators to request removal of their data. 
+                    This includes deletion of embeddings, metadata, and associated video segments, with confirmation workflows to ensure 
+                    proper data removal.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
+       
+       
         {/* Conclusion */}
         <section id="conclusion" className="mb-32 scroll-mt-32">
           <motion.div

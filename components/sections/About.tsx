@@ -24,7 +24,7 @@ export default function About() {
           className="mb-24"
         >
           <h2 className="section-title text-center mb-6">About Me</h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto text-center leading-relaxed">
+          <p className="text-xl max-w-3xl mx-auto text-center leading-relaxed transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>
             AI Engineer with practical experience in NLP, Computer Vision, and Generative AI
           </p>
         </motion.div>
@@ -37,8 +37,8 @@ export default function About() {
             viewport={{ once: true }}
             className="glass-card"
           >
-            <h3 className="text-2xl font-bold mb-6 text-white">Bio</h3>
-            <div className="space-y-4 text-gray-400 leading-relaxed">
+            <h3 className="text-2xl font-bold mb-6 transition-colors duration-500" style={{ color: 'var(--text-primary)' }}>Bio</h3>
+            <div className="space-y-4 leading-relaxed transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>
               <p>
                 I&apos;m an AI Engineer with practical experience designing, training, and deploying 
                 end-to-end machine learning models for NLP, computer vision, and generative AI. 
@@ -59,8 +59,8 @@ export default function About() {
                 I enjoy working with diverse teams to transform messy requirements into practical, working AI solutions.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-white/10">
-            <p className="text-[11px] md:text-xs text-pink-300/50 italic">
+            <div className="mt-6 pt-4 transition-colors duration-500" style={{ borderTop: '1px solid var(--border-color)' }}>
+            <p className="text-[11px] md:text-xs italic transition-colors duration-500" style={{ color: 'rgb(var(--accent-1) / 0.5)' }}>
                 &ldquo;You already know about my past. As an exchange, I want to witness your future.&rdquo; — Elysia
               </p>
             </div>
@@ -84,26 +84,26 @@ export default function About() {
           >
             {/* Education */}
             <div className="glass-card">
-              <h3 className="text-2xl font-bold mb-6 text-white">Education</h3>
+              <h3 className="text-2xl font-bold mb-6 transition-colors duration-500" style={{ color: 'var(--text-primary)' }}>Education</h3>
               <div className="space-y-6">
-                <div className="border-l-2 border-blue-500/30 pl-4">
-                  <h4 className="font-semibold text-white text-lg">Bachelor of Science in Computer Science</h4>
-                  <p className="text-gray-400 text-sm mt-1">Assumption University of Thailand</p>
-                  <p className="text-gray-400 text-sm">GPA: 3.69 | Bangkok, Thailand</p>
-                  <p className="text-gray-600 text-xs mt-2">June 2022 - Oct 2025</p>
+                <div className="border-l-2 pl-4 transition-colors duration-500" style={{ borderColor: 'rgb(var(--accent-1) / 0.3)' }}>
+                  <h4 className="font-semibold text-lg transition-colors duration-500" style={{ color: 'var(--text-primary)' }}>Bachelor of Science in Computer Science</h4>
+                  <p className="text-sm mt-1 transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>Assumption University of Thailand</p>
+                  <p className="text-sm transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>GPA: 3.69 | Bangkok, Thailand</p>
+                  <p className="text-xs mt-2 transition-colors duration-500" style={{ color: 'var(--text-tertiary)' }}>June 2022 - Oct 2025</p>
                 </div>
-                <div className="border-l-2 border-cyan-500/30 pl-4">
-                  <h4 className="font-semibold text-white text-lg">Key Experience</h4>
-                  <p className="text-gray-400 text-sm mt-1">ML Engineer Intern @ LU Lab</p>
-                  <p className="text-gray-400 text-sm">AI Engineer @ ISL</p>
-                  <p className="text-gray-400 text-sm">Teaching Assistant (Python, Java)</p>
+                <div className="border-l-2 pl-4 transition-colors duration-500" style={{ borderColor: 'rgb(var(--accent-2) / 0.3)' }}>
+                  <h4 className="font-semibold text-lg transition-colors duration-500" style={{ color: 'var(--text-primary)' }}>Key Experience</h4>
+                  <p className="text-sm mt-1 transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>ML Engineer Intern @ LU Lab</p>
+                  <p className="text-sm transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>AI Engineer @ ISL</p>
+                  <p className="text-sm transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>Teaching Assistant (Python, Java)</p>
                 </div>
               </div>
             </div>
 
             {/* Core Skills */}
             <div className="glass-card">
-              <h3 className="text-2xl font-bold mb-6 text-white">Core Expertise</h3>
+              <h3 className="text-2xl font-bold mb-6 transition-colors duration-500" style={{ color: 'var(--text-primary)' }}>Core Expertise</h3>
               <div className="grid grid-cols-2 gap-3">
                 {skillsData.map((skill, index) => (
                   <motion.div
@@ -112,9 +112,9 @@ export default function About() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
-                    className="glass p-3 rounded-lg hover:bg-white/10 transition-all duration-300 text-center"
+                    className="glass p-3 rounded-lg transition-all duration-500 text-center"
                   >
-                    <span className="text-sm text-gray-300 font-medium">{skill.name}</span>
+                    <span className="text-sm font-medium transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>{skill.name}</span>
                   </motion.div>
                 ))}
               </div>

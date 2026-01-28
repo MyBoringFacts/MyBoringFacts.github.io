@@ -45,10 +45,10 @@ export default function Skills() {
           className="mb-20"
         >
           <h2 className="section-title text-center mb-6">Skills & Technical Proficiency</h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto text-center leading-relaxed">
+          <p className="text-xl max-w-3xl mx-auto text-center leading-relaxed transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>
             Building production-ready AI systems that connect ideas, people, and technology.
           </p>
-          <p className="text-lg text-gray-500 max-w-2xl mx-auto text-center mt-4 leading-relaxed">
+          <p className="text-lg max-w-2xl mx-auto text-center mt-4 leading-relaxed transition-colors duration-500" style={{ color: 'var(--text-tertiary)' }}>
             I enjoy collaborating across disciplines — turning complex business goals into practical, deployable solutions.
           </p>
         </motion.div>
@@ -64,14 +64,19 @@ export default function Skills() {
               transition={{ delay: index * 0.1 }}
               className="skill-item"
             >
-              <h3 className="text-lg font-semibold mb-3 text-center text-white">
+              <h3 className="text-lg font-semibold mb-3 text-center transition-colors duration-500" style={{ color: 'var(--text-primary)' }}>
                 {category.title}
               </h3>
               <div className="flex flex-wrap gap-2 justify-center">
                 {category.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="px-2 py-1 bg-white/5 text-xs rounded text-gray-400 border border-white/10"
+                    className="px-2 py-1 text-xs rounded transition-all duration-500"
+                    style={{ 
+                      background: 'var(--glass-bg)',
+                      color: 'var(--text-secondary)',
+                      border: '1px solid var(--border-color)'
+                    }}
                   >
                     {skill}
                   </span>
@@ -89,7 +94,7 @@ export default function Skills() {
           viewport={{ once: true }}
           className="text-center mt-20 glass-card"
         >
-          <p className="text-lg text-gray-400 mb-6 leading-relaxed">
+          <p className="text-lg mb-6 leading-relaxed transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>
             Always learning, always building. Let&apos;s create something amazing together.
           </p>
           <a href="#contact" className="btn-primary inline-block">

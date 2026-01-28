@@ -5,16 +5,6 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 export default function Hero() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
-    }
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
-
   const scrollToAbout = () => {
     const element = document.getElementById('about')
     if (element) {
@@ -24,14 +14,6 @@ export default function Hero() {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
-      {/* Animated background spotlight */}
-      <div 
-        className="absolute inset-0 opacity-20 transition-opacity duration-700 pointer-events-none"
-        style={{
-          background: `radial-gradient(1000px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255, 99, 176, 0.18), transparent 70%)`
-        }}
-      />
-
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 opacity-[0.015]" style={{
         backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
@@ -41,9 +23,9 @@ export default function Hero() {
       
       {/* Floating glass orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-96 h-96 rounded-full opacity-20 blur-3xl" style={{ backgroundColor: 'rgba(255, 99, 176, 0.10)' }} />
-        <div className="absolute bottom-20 right-10 w-[32rem] h-[32rem] rounded-full opacity-20 blur-3xl" style={{ backgroundColor: 'rgba(95, 247, 255, 0.10)', animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/3 w-64 h-64 rounded-full opacity-15 blur-3xl" style={{ backgroundColor: 'rgba(180, 120, 255, 0.10)', animationDelay: '4s' }} />
+        <div className="absolute top-20 left-10 w-96 h-96 rounded-full opacity-20 blur-3xl transition-colors duration-500" style={{ backgroundColor: 'rgb(var(--accent-1) / 0.10)' }} />
+        <div className="absolute bottom-20 right-10 w-[32rem] h-[32rem] rounded-full opacity-20 blur-3xl transition-colors duration-500" style={{ backgroundColor: 'rgb(var(--accent-2) / 0.10)', animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/3 w-64 h-64 rounded-full opacity-15 blur-3xl transition-colors duration-500" style={{ backgroundColor: 'rgb(var(--accent-3) / 0.10)', animationDelay: '4s' }} />
       </div>
 
       <div className="container mx-auto px-6 md:px-12 lg:px-20 pl-6 lg:pl-32 relative z-10">
@@ -62,23 +44,26 @@ export default function Hero() {
                 transition={{ delay: 0.3 }}
                 className="space-y-2"
               >
-                <p className="text-sm uppercase tracking-[0.3em] text-gray-500 font-light">
+                <p
+                  className="text-sm uppercase tracking-[0.3em] font-light transition-colors duration-500"
+                  style={{ color: 'var(--text-tertiary)' }}
+                >
                   Portfolio
                 </p>
               </motion.div>
               
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight">
-                <span className="text-white">Thadoe Hein</span>
+              <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight transition-colors duration-500" style={{ color: 'var(--text-primary)' }}>
+                <span>Thadoe Hein</span>
               </h1>
               
               <div className="space-y-4">
-                <p className="text-2xl md:text-3xl font-light text-gray-400 leading-relaxed">
+                <p className="text-2xl md:text-3xl font-light leading-relaxed transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>
                   AI Engineer
                 </p>
-                <p className="text-lg md:text-xl text-gray-500 leading-relaxed max-w-2xl">
+                <p className="text-lg md:text-xl leading-relaxed max-w-2xl transition-colors duration-500" style={{ color: 'var(--text-tertiary)' }}>
                   Specializing in <span className="gradient-text">NLP, Computer Vision</span> & <span className="gradient-text">Generative AI</span>
                 </p>
-                <p className="text-base md:text-lg text-gray-600 leading-relaxed max-w-xl">
+                <p className="text-base md:text-lg leading-relaxed max-w-xl transition-colors duration-500" style={{ color: 'var(--text-tertiary)' }}>
                   Building end-to-end AI/ML solutions with RAG, MLOps, and cloud-native architectures
                 </p>
     
@@ -125,26 +110,27 @@ export default function Hero() {
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-          className="flex justify-start mt-16"
-        >
-          <motion.button
-            onClick={scrollToAbout}
-            className="flex flex-col items-center gap-3 text-gray-600 hover:text-gray-400 transition-colors group"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1 }}
+            className="flex justify-start mt-16"
           >
-            <span className="text-[10px] uppercase tracking-widest font-medium">Scroll Down</span>
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-              className="opacity-60 group-hover:opacity-100 transition-opacity"
+            <motion.button
+              onClick={scrollToAbout}
+              className="flex flex-col items-center gap-3 transition-colors group"
+              style={{ color: 'var(--text-tertiary)' }}
             >
-              <span className="text-2xl">↓</span>
-            </motion.div>
-          </motion.button>
-        </motion.div>
+              <span className="text-[10px] uppercase tracking-widest font-medium">Scroll Down</span>
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                className="opacity-60 group-hover:opacity-100 transition-opacity"
+              >
+                <span className="text-2xl">↓</span>
+              </motion.div>
+            </motion.button>
+          </motion.div>
       </div>
 
       

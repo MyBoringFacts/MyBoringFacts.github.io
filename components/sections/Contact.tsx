@@ -21,7 +21,7 @@ export default function Contact() {
           className="mb-24"
         >
           <h2 className="section-title text-center mb-6">Get In Touch</h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto text-center leading-relaxed">
+          <p className="text-xl max-w-3xl mx-auto text-center leading-relaxed transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>
             Open to AI/ML opportunities and collaborations. Let&apos;s connect!
           </p>
         </motion.div>
@@ -36,14 +36,15 @@ export default function Contact() {
           >
             {/* Info Card */}
             <div className="glass-card">
-              <h3 className="text-2xl font-bold mb-6 text-white">Contact Information</h3>
-              <div className="space-y-6 text-gray-400">
+              <h3 className="text-2xl font-bold mb-6 transition-colors duration-500" style={{ color: 'var(--text-primary)' }}>Contact Information</h3>
+              <div className="space-y-6 transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>
                 <div className="flex items-start gap-4">
                   <div>
-                    <p className="font-medium text-white mb-1">Email</p>
+                    <p className="font-medium mb-1 transition-colors duration-500" style={{ color: 'var(--text-primary)' }}>Email</p>
                     <a
                       href="mailto:thadoe.work@gmail.com"
-                      className="text-gray-400 hover:text-white transition-colors"
+                      className="transition-colors duration-500 hover:opacity-80"
+                      style={{ color: 'var(--text-secondary)' }}
                     >
                       thadoe.work@gmail.com
                     </a>
@@ -51,14 +52,14 @@ export default function Contact() {
                 </div>
                 <div className="flex items-start gap-4">
                   <div>
-                    <p className="font-medium text-white mb-1">Location</p>
-                    <p className="text-gray-400">Bangkok, Thailand | Open to remote opportunities</p>
+                    <p className="font-medium mb-1 transition-colors duration-500" style={{ color: 'var(--text-primary)' }}>Location</p>
+                    <p className="transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>Bangkok, Thailand | Open to remote opportunities</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
                   <div>
-                    <p className="font-medium text-white mb-1">Status</p>
-                    <p className="text-gray-400">Open to AI/ML Engineer positions</p>
+                    <p className="font-medium mb-1 transition-colors duration-500" style={{ color: 'var(--text-primary)' }}>Status</p>
+                    <p className="transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>Open to AI/ML Engineer positions</p>
                   </div>
                 </div>
               </div>
@@ -66,7 +67,7 @@ export default function Contact() {
 
             {/* Social Links */}
             <div className="glass-card">
-              <h3 className="text-2xl font-bold mb-6 text-white">Connect With Me</h3>
+              <h3 className="text-2xl font-bold mb-6 transition-colors duration-500" style={{ color: 'var(--text-primary)' }}>Connect With Me</h3>
               <div className="grid grid-cols-2 gap-4">
                 {socialLinks.map((social) => (
                   <a
@@ -74,9 +75,13 @@ export default function Contact() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-4 bg-white/5 hover:bg-white/10 rounded-lg transition-all duration-300 border border-white/10 hover:border-white/20"
+                    className="flex items-center gap-3 p-4 rounded-lg transition-all duration-500"
+                    style={{ 
+                      background: 'var(--glass-bg)',
+                      border: '1px solid var(--border-color)'
+                    }}
                   >
-                    <span className="text-gray-400 hover:text-white transition-colors text-sm">
+                    <span className="text-sm transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>
                       {social.name}
                     </span>
                   </a>
@@ -91,10 +96,11 @@ export default function Contact() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center mt-24 pt-8 border-t border-white/5"
+          className="text-center mt-24 pt-8 transition-colors duration-500"
+          style={{ borderTop: '1px solid var(--border-color)' }}
         >
-          <p className="text-gray-600 text-sm">
-            © {new Date().getFullYear()} Thadoe Hein.Always learning, always building.
+          <p className="text-sm transition-colors duration-500" style={{ color: 'var(--text-tertiary)' }}>
+            © {new Date().getFullYear()} Thadoe Hein. Always learning, always building.
           </p>
         </motion.div>
       </div>
