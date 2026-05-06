@@ -1,67 +1,32 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
-import Hero from '@/components/sections/Hero'
-import About from '@/components/sections/About'
-import Projects from '@/components/sections/Projects'
-import Skills from '@/components/sections/Skills'
-import Contact from '@/components/sections/Contact'
-import Navigation from '@/components/Navigation'
+import { Navigation } from "@/components/navigation";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { HeroSection } from "@/components/sections/hero";
+import { AboutSection } from "@/components/sections/about";
+import { ExperienceSection } from "@/components/sections/experience";
+import { ProjectsSection } from "@/components/sections/projects";
+import { ContactSection } from "@/components/sections/contact";
+import { useTheme } from "@/components/theme-provider";
 
-export default function Home() {
-  const [activeSection, setActiveSection] = useState('home')
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'about', 'projects', 'skills', 'contact']
-      const scrollPosition = window.scrollY + 100
-
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const offsetTop = element.offsetTop
-          const offsetHeight = element.offsetHeight
-
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
-            break
-          }
-        }
-      }
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+export default function Portfolio() {
+  const { theme } = useTheme();
+  const isColorful = theme === "black-hole";
 
   return (
-    <main className="relative">
-      <Navigation activeSection={activeSection} />
-      
-      <section id="home">
-        <Hero />
-      </section>
-      <div className="divider-elysia mx-6 md:mx-12 lg:mx-20 my-16" />
-      
-      <section id="about">
-        <About />
-      </section>
-      <div className="divider-elysia mx-6 md:mx-12 lg:mx-20 my-16" />
-      
-      <section id="projects">
-        <Projects />
-      </section>
-      <div className="divider-elysia mx-6 md:mx-12 lg:mx-20 my-16" />
-      
-      <section id="skills">
-        <Skills />
-      </section>
-      <div className="divider-elysia mx-6 md:mx-12 lg:mx-20 my-16" />
-      
-      <section id="contact">
-        <Contact />
-      </section>
+    <main
+      className="min-h-screen transition-colors duration-500"
+      style={{
+        backgroundColor: isColorful ? "#0a0a0a" : "#ffffff",
+      }}
+    >
+      <Navigation />
+      <ThemeToggle />
+      <HeroSection />
+      <AboutSection />
+      <ExperienceSection />
+      <ProjectsSection />
+      <ContactSection />
     </main>
-  )
+  );
 }
-

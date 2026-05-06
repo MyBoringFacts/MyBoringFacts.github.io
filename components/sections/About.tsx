@@ -1,129 +1,182 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useTheme } from "@/components/theme-provider";
+import { GlowingEffect } from "@/components/ui/glowing-effect";
+import { motion } from "motion/react";
+import { useInView } from "motion/react";
+import { useRef } from "react";
 
-const skillsData = [
-  { name: 'PyTorch & Deep Learning', level: 92 },
-  { name: 'NLP & RAG', level: 95 },
-  { name: 'Computer Vision', level: 88 },
-  { name: 'MLOps & AWS', level: 85 },
-  { name: 'Python & SQL', level: 95 },
-  { name: 'Generative AI', level: 90 },
-]
+const skills = [
+  { category: "AI & ML", items: ["LLMs", "RAG Systems", "AI Agents", "NLP", "Computer Vision", "MLOps"] },
+  { category: "Frameworks", items: ["LangChain", "LangGraph", "Hugging Face", "OpenAI API", "Qdrant"] },
+  { category: "Programming", items: ["Python", "TypeScript", "Node.js", "React", "Next.js", "SQL"] },
+  { category: "Infrastructure", items: ["Docker", "AWS", "GCP", "CI/CD", "REST APIs"] },
+];
 
-export default function About() {
+export function AboutSection() {
+  const { theme } = useTheme();
+  const isColorful = theme === "black-hole";
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section className="py-32 px-6 md:px-12 lg:px-20 border-t border-white/5">
-      <div className="container mx-auto max-w-7xl">
-        {/* Section Header */}
+    <section id="about" className="relative py-32 px-4 md:px-8" ref={ref}>
+      <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-24"
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
         >
-          <h2 className="section-title text-center mb-6">About Me</h2>
-          <p className="text-xl max-w-3xl mx-auto text-center leading-relaxed transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>
-            AI Engineer with practical experience in NLP, Computer Vision, and Generative AI
-          </p>
+          <h2
+            className="text-4xl md:text-6xl font-bold mb-4"
+            style={{ color: isColorful ? "#fafafa" : "#171717" }}
+          >
+            About Me
+          </h2>
+          <div
+            className="h-1 w-20 mb-12"
+            style={{ backgroundColor: isColorful ? "#3b82f6" : "#404040" }}
+          />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-10 lg:gap-12">
-          {/* Bio Card */}
+        <div className="grid md:grid-cols-2 gap-12">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="glass-card"
+            initial={{ opacity: 0, x: -40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-bold mb-6 transition-colors duration-500" style={{ color: 'var(--text-primary)' }}>Bio</h3>
-            <div className="space-y-4 leading-relaxed transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>
-              <p>
-                I&apos;m an AI Engineer with practical experience designing, training, and deploying 
-                end-to-end machine learning models for NLP, computer vision, and generative AI. 
-                My work focuses on building production-ready systems that solve real-world problems.
-              </p>
-              <p>
-                Proficient in model fine-tuning, RAG (Retrieval-Augmented Generation), data preprocessing, 
-                and MLOps pipeline automation using PyTorch, HuggingFace, Docker, and AWS. I&apos;ve successfully 
-                integrated AI models into applications like face search engines, text summarization systems, 
-                and conversational agents.
-              </p>
-              <p>
-                Currently based in Bangkok, Thailand, I&apos;m passionate about advancing AI capabilities 
-                in low-resource languages and building scalable, cloud-native ML solutions. 
-              </p>
-              <p>
-                I don’t just build models or systems — I connect the dots between business, design, and engineering. 
-                I enjoy working with diverse teams to transform messy requirements into practical, working AI solutions.
-              </p>
+            <div
+              className="relative p-6 rounded-2xl border mb-6"
+              style={{
+                backgroundColor: isColorful ? "rgba(38, 38, 38, 0.5)" : "#ffffff",
+                borderColor: isColorful ? "#404040" : "#e5e5e5",
+              }}
+            >
+              {isColorful && (
+                <GlowingEffect
+                  spread={40}
+                  glow={true}
+                  disabled={false}
+                  proximity={64}
+                  inactiveZone={0.01}
+                />
+              )}
+              <div className="relative z-10">
+                <p
+                  className="text-lg leading-relaxed mb-4"
+                  style={{ color: isColorful ? "#a3a3a3" : "#525252" }}
+                >
+                  AI Engineer with strong experience bridging research and production systems. 
+                  I specialize in designing end-to-end machine learning pipelines, production-grade 
+                  RAG systems, and multi-agent workflows.
+                </p>
+                <p
+                  className="text-lg leading-relaxed"
+                  style={{ color: isColorful ? "#a3a3a3" : "#525252" }}
+                >
+                  Experienced in model lifecycle management, CI/CD pipelines, and deploying 
+                  AI services with monitoring, logging, and performance optimization.
+                </p>
+              </div>
             </div>
-            <div className="mt-6 pt-4 transition-colors duration-500" style={{ borderTop: '1px solid var(--border-color)' }}>
-            <p className="text-[11px] md:text-xs italic transition-colors duration-500" style={{ color: 'rgb(var(--accent-1) / 0.5)' }}>
-                &ldquo;You already know about my past. As an exchange, I want to witness your future.&rdquo; — Elysia
-              </p>
-            </div>
-            <div className="mt-6 pt-4">
-              <a 
-                href="/resume.pdf" 
-                download="Thadoe_Hein_Resume.pdf"
-                className="btn-secondary text-base px-8 py-4 inline-block"
+            
+            <div className="flex flex-wrap gap-4">
+              <div
+                className="relative px-4 py-2 rounded-lg border"
+                style={{
+                  backgroundColor: isColorful ? "rgba(59, 130, 246, 0.1)" : "#f5f5f5",
+                  borderColor: isColorful ? "#404040" : "#e5e5e5",
+                  color: isColorful ? "#60a5fa" : "#171717",
+                }}
               >
-                Download My Resume
-              </a>
+                {isColorful && (
+                  <GlowingEffect
+                    spread={20}
+                    glow={true}
+                    disabled={false}
+                    proximity={32}
+                    inactiveZone={0.01}
+                  />
+                )}
+                <span className="relative z-10 font-mono text-sm">GPA: 3.7/4.0</span>
+              </div>
+              <div
+                className="relative px-4 py-2 rounded-lg border"
+                style={{
+                  backgroundColor: isColorful ? "rgba(59, 130, 246, 0.1)" : "#f5f5f5",
+                  borderColor: isColorful ? "#404040" : "#e5e5e5",
+                  color: isColorful ? "#60a5fa" : "#171717",
+                }}
+              >
+                {isColorful && (
+                  <GlowingEffect
+                    spread={20}
+                    glow={true}
+                    disabled={false}
+                    proximity={32}
+                    inactiveZone={0.01}
+                  />
+                )}
+                <span className="relative z-10 font-mono text-sm">B.S. Computer Science</span>
+              </div>
             </div>
           </motion.div>
 
-          {/* Education & Experience */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, x: 40 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
             className="space-y-6"
           >
-            {/* Education */}
-            <div className="glass-card">
-              <h3 className="text-2xl font-bold mb-6 transition-colors duration-500" style={{ color: 'var(--text-primary)' }}>Education</h3>
-              <div className="space-y-6">
-                <div className="border-l-2 pl-4 transition-colors duration-500" style={{ borderColor: 'rgb(var(--accent-1) / 0.3)' }}>
-                  <h4 className="font-semibold text-lg transition-colors duration-500" style={{ color: 'var(--text-primary)' }}>Bachelor of Science in Computer Science</h4>
-                  <p className="text-sm mt-1 transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>Assumption University of Thailand</p>
-                  <p className="text-sm transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>GPA: 3.69 | Bangkok, Thailand</p>
-                  <p className="text-xs mt-2 transition-colors duration-500" style={{ color: 'var(--text-tertiary)' }}>June 2022 - Oct 2025</p>
-                </div>
-                <div className="border-l-2 pl-4 transition-colors duration-500" style={{ borderColor: 'rgb(var(--accent-2) / 0.3)' }}>
-                  <h4 className="font-semibold text-lg transition-colors duration-500" style={{ color: 'var(--text-primary)' }}>Key Experience</h4>
-                  <p className="text-sm mt-1 transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>ML Engineer Intern @ LU Lab</p>
-                  <p className="text-sm transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>AI Engineer @ ISL</p>
-                  <p className="text-sm transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>Teaching Assistant (Python, Java)</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Core Skills */}
-            <div className="glass-card">
-              <h3 className="text-2xl font-bold mb-6 transition-colors duration-500" style={{ color: 'var(--text-primary)' }}>Core Expertise</h3>
-              <div className="grid grid-cols-2 gap-3">
-                {skillsData.map((skill, index) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="glass p-3 rounded-lg transition-all duration-500 text-center"
+            {skills.map((skillGroup, idx) => (
+              <div
+                key={skillGroup.category}
+                className="relative p-4 rounded-xl border"
+                style={{
+                  backgroundColor: isColorful ? "rgba(38, 38, 38, 0.3)" : "#ffffff",
+                  borderColor: isColorful ? "#404040" : "#e5e5e5",
+                }}
+              >
+                {isColorful && (
+                  <GlowingEffect
+                    spread={30}
+                    glow={true}
+                    disabled={false}
+                    proximity={48}
+                    inactiveZone={0.01}
+                  />
+                )}
+                <div className="relative z-10">
+                  <h3
+                    className="text-sm font-mono uppercase tracking-wider mb-3"
+                    style={{ color: isColorful ? "#60a5fa" : "#737373" }}
                   >
-                    <span className="text-sm font-medium transition-colors duration-500" style={{ color: 'var(--text-secondary)' }}>{skill.name}</span>
-                  </motion.div>
-                ))}
+                    {skillGroup.category}
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {skillGroup.items.map((skill, skillIdx) => (
+                      <motion.span
+                        key={skill}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                        transition={{ duration: 0.4, delay: 0.5 + idx * 0.1 + skillIdx * 0.05 }}
+                        className="px-3 py-1 text-sm rounded-full border"
+                        style={{
+                          borderColor: isColorful ? "#525252" : "#e5e5e5",
+                          color: isColorful ? "#d4d4d4" : "#404040",
+                          backgroundColor: isColorful ? "rgba(38, 38, 38, 0.5)" : "rgba(255, 255, 255, 0.8)",
+                        }}
+                      >
+                        {skill}
+                      </motion.span>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
+            ))}
           </motion.div>
         </div>
       </div>
     </section>
-  )
+  );
 }
-
-
