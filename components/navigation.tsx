@@ -1,14 +1,16 @@
 "use client";
 
+import Link from "next/link";
 import { useTheme } from "@/components/theme-provider";
 import { motion } from "motion/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, type MouseEvent } from "react";
 
 const navItems = [
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
+  { label: "Me", href: "/me" },
 ];
 
 export function Navigation() {
@@ -44,28 +46,39 @@ export function Navigation() {
           borderColor: isColorful ? "#404040" : "#e5e5e5",
         }}
       >
-        {navItems.map((item) => (
-          <a
-            key={item.label}
-            href={item.href}
-            className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:scale-105"
-            style={{
+        {navItems.map((item) => {
+          const sharedProps = {
+            className:
+              "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:scale-105",
+            style: {
               color: isColorful ? "#d4d4d4" : "#404040",
-            }}
-            onMouseEnter={(e) => {
+            },
+            onMouseEnter: (e: MouseEvent<HTMLElement>) => {
               e.currentTarget.style.backgroundColor = isColorful
                 ? "rgba(59, 130, 246, 0.2)"
                 : "rgba(0, 0, 0, 0.05)";
               e.currentTarget.style.color = isColorful ? "#60a5fa" : "#171717";
-            }}
-            onMouseLeave={(e) => {
+            },
+            onMouseLeave: (e: MouseEvent<HTMLElement>) => {
               e.currentTarget.style.backgroundColor = "transparent";
               e.currentTarget.style.color = isColorful ? "#d4d4d4" : "#404040";
-            }}
-          >
-            {item.label}
-          </a>
-        ))}
+            },
+          };
+
+          if (item.href.startsWith("#")) {
+            return (
+              <a key={item.label} href={item.href} {...sharedProps}>
+                {item.label}
+              </a>
+            );
+          }
+
+          return (
+            <Link key={item.label} href={item.href} {...sharedProps}>
+              {item.label}
+            </Link>
+          );
+        })}
       </div>
     </motion.nav>
   );

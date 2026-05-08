@@ -23,7 +23,7 @@ export function AboutSection() {
     <section id="about" className="relative py-32 px-4 md:px-8" ref={ref}>
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={false}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
@@ -41,7 +41,7 @@ export function AboutSection() {
 
         <div className="grid md:grid-cols-2 gap-12">
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={false}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
@@ -123,7 +123,7 @@ export function AboutSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={false}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="space-y-6"
@@ -157,7 +157,7 @@ export function AboutSection() {
                     {skillGroup.items.map((skill, skillIdx) => (
                       <motion.span
                         key={skill}
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        initial={false}
                         animate={isInView ? { opacity: 1, scale: 1 } : {}}
                         transition={{ duration: 0.4, delay: 0.5 + idx * 0.1 + skillIdx * 0.05 }}
                         className="px-3 py-1 text-sm rounded-full border"

@@ -53,7 +53,7 @@ export function ContactSection() {
     <section id="contact" className="relative py-32 px-4 md:px-8" ref={ref}>
       <div className="max-w-4xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={false}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
@@ -82,13 +82,17 @@ export function ContactSection() {
           {contacts.map((contact, idx) => (
             <motion.div
               key={contact.label}
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.4 + idx * 0.1 }}
             >
               <CardSpotlight
                 color={isColorful ? "#262626" : "#d4d4d4"}
-                className="h-full w-full rounded-2xl p-0 transition-all duration-300 hover:scale-[1.02]"
+                className={`h-full w-full rounded-2xl p-0 transition-all duration-300 hover:scale-[1.02] ${
+                  isColorful
+                    ? "border-neutral-800 bg-black"
+                    : "border-neutral-200 bg-white"
+                }`}
               >
                 <a
                   href={contact.href}
@@ -125,20 +129,6 @@ export function ContactSection() {
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-24 pt-12 border-t text-center"
-          style={{ borderColor: isColorful ? "#262626" : "#e5e5e5" }}
-        >
-          <p
-            className="text-sm"
-            style={{ color: isColorful ? "#737373" : "#a3a3a3" }}
-          >
-            © 2026 Thadoe Hein. Built with Next.js & Motion.
-          </p>
-        </motion.div>
       </div>
     </section>
   );
