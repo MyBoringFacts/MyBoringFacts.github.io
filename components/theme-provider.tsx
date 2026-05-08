@@ -7,7 +7,6 @@ type Theme = "white-hole" | "black-hole";
 type ThemeProviderProps = {
   children: React.ReactNode;
   defaultTheme?: Theme;
-  storageKey?: string;
 };
 
 type ThemeProviderState = {
@@ -25,15 +24,8 @@ const ThemeProviderContext = React.createContext<ThemeProviderState>(initialStat
 export function ThemeProvider({
   children,
   defaultTheme = "black-hole",
-  storageKey = "portfolio-theme",
 }: ThemeProviderProps) {
-  const [theme, setTheme] = React.useState<Theme>(() => {
-    if (typeof window === "undefined") {
-      return defaultTheme;
-    }
-    const stored = localStorage.getItem(storageKey) as Theme | null;
-    return stored ?? defaultTheme;
-  });
+  const [theme, setTheme] = React.useState<Theme>(defaultTheme);
 
   React.useEffect(() => {
     const root = window.document.documentElement;
@@ -51,10 +43,7 @@ export function ThemeProvider({
 
   const value = {
     theme,
-    setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme);
-      setTheme(theme);
-    },
+    setTheme: (theme: Theme) => setTheme(theme),
   };
 
   return (

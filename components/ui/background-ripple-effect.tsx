@@ -1,6 +1,10 @@
 "use client";
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+
+// useLayoutEffect warns on the server; fall back to useEffect there.
+const useIsomorphicLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 const colorPalette = [
   "rgba(59, 130, 246, 0.85)",   // blue
@@ -31,24 +35,72 @@ export const BackgroundRippleEffect = ({
   cellSize = 56,
   className,
   rotateColors = false,
+  fillContainer = false,
+  edgeToEdge = false,
 }: {
   rows?: number;
   cols?: number;
   cellSize?: number;
   className?: string;
   rotateColors?: boolean;
+  fillContainer?: boolean;
+  edgeToEdge?: boolean;
 }) => {
   const [clickedCell, setClickedCell] = useState<{
     row: number;
     col: number;
   } | null>(null);
-  const [rippleKey, setRippleKey] = useState(0);
+  const [rippleNonce, setRippleNonce] = useState(0);
   const [colorIndex, setColorIndex] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
+  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+
+  useIsomorphicLayoutEffect(() => {
+    if (!fillContainer || !ref.current) return;
+
+    const element = ref.current;
+
+    // Measure synchronously on (re)mount so the grid never paints at the
+    // 0x0 default - which would otherwise show the user a clipped grid
+    // anchored to the top-left until ResizeObserver fires asynchronously.
+    const initialRect = element.getBoundingClientRect();
+    const initialWidth = Math.ceil(initialRect.width);
+    const initialHeight = Math.ceil(initialRect.height);
+    if (initialWidth > 0 || initialHeight > 0) {
+      setContainerSize((prev) =>
+        prev.width === initialWidth && prev.height === initialHeight
+          ? prev
+          : { width: initialWidth, height: initialHeight }
+      );
+    }
+
+    const observer = new ResizeObserver((entries) => {
+      const entry = entries[0];
+      if (!entry) return;
+      const { width, height } = entry.contentRect;
+      const nextWidth = Math.ceil(width);
+      const nextHeight = Math.ceil(height);
+      setContainerSize((prev) =>
+        prev.width === nextWidth && prev.height === nextHeight
+          ? prev
+          : { width: nextWidth, height: nextHeight }
+      );
+    });
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [fillContainer]);
+
+  const computedCols = fillContainer
+    ? Math.max(cols, Math.ceil(containerSize.width / cellSize) + 2)
+    : cols;
+  const computedRows = fillContainer
+    ? Math.max(rows, Math.ceil(containerSize.height / cellSize) + 2)
+    : rows;
 
   const handleCellClick = (row: number, col: number) => {
     setClickedCell({ row, col });
-    setRippleKey((k) => k + 1);
+    setRippleNonce((n) => n + 1);
     if (rotateColors) {
       setColorIndex((prev) => (prev + 1) % colorPalette.length);
     }
@@ -64,13 +116,22 @@ export const BackgroundRippleEffect = ({
         className
       )}
     >
-      <div className="relative h-auto w-auto overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 z-[2] h-full w-full overflow-hidden" />
+      <div
+        className={cn(
+          "relative overflow-hidden",
+          fillContainer
+            ? "flex h-full w-full items-center justify-center"
+            : "h-auto w-auto"
+        )}
+      >
+        <div className="pointer-events-none absolute inset-0 z-2 h-full w-full overflow-hidden" />
         <DivGrid
-          key={`base-${rippleKey}`}
-          className="mask-radial-from-20% mask-radial-at-top opacity-60"
-          rows={rows}
-          cols={cols}
+          className={cn(
+            "opacity-80",
+            edgeToEdge ? "mask-none" : "mask-radial-from-20% mask-radial-at-top"
+          )}
+          rows={computedRows}
+          cols={computedCols}
           cellSize={cellSize}
           borderColor="var(--cell-border-color)"
           fillColor="var(--cell-fill-color)"
@@ -79,6 +140,8 @@ export const BackgroundRippleEffect = ({
           interactive
           rotateColors={rotateColors}
           activeColor={colorPalette[colorIndex]}
+          rippleNonce={rippleNonce}
+          maxRippleRadius={8}
         />
       </div>
     </div>
@@ -97,6 +160,8 @@ type DivGridProps = {
   interactive?: boolean;
   rotateColors?: boolean;
   activeColor?: string;
+  rippleNonce?: number;
+  maxRippleRadius?: number;
 };
 
 type CellStyle = React.CSSProperties & {
@@ -119,6 +184,8 @@ const DivGrid = ({
   interactive = true,
   rotateColors = false,
   activeColor = "rgba(59, 130, 246, 0.5)",
+  rippleNonce = 0,
+  maxRippleRadius = Number.POSITIVE_INFINITY,
 }: DivGridProps) => {
   const cells = useMemo(
     () => Array.from({ length: rows * cols }, (_, idx) => idx),
@@ -135,7 +202,7 @@ const DivGrid = ({
   };
 
   return (
-    <div className={cn("relative z-[3]", className)} style={gridStyle}>
+    <div className={cn("relative z-3", className)} style={gridStyle}>
       {cells.map((idx) => {
         const rowIdx = Math.floor(idx / cols);
         const colIdx = idx % cols;
@@ -145,10 +212,11 @@ const DivGrid = ({
         const distance = clickedCell
           ? Math.hypot(clickedCell.row - rowIdx, clickedCell.col - colIdx)
           : 0;
+        const inRippleRange = Boolean(clickedCell) && distance <= maxRippleRadius;
         const delay = clickedCell ? Math.max(0, distance * 55) : 0;
         const duration = 200 + distance * 80;
 
-        const style: CellStyle = clickedCell
+        const style: CellStyle = clickedCell && inRippleRange
           ? {
               "--delay": `${delay}ms`,
               "--duration": `${duration}ms`,
@@ -161,13 +229,24 @@ const DivGrid = ({
               "--hover-glow-color": hoverGlowColor,
             };
 
+        const rippleAnimationClass =
+          clickedCell && inRippleRange
+            ? rotateColors
+              ? rippleNonce % 2 === 0
+                ? "animate-cell-ripple-color-a fill-mode-[none]"
+                : "animate-cell-ripple-color-b fill-mode-[none]"
+              : rippleNonce % 2 === 0
+              ? "animate-cell-ripple-a fill-mode-[none]"
+              : "animate-cell-ripple-b fill-mode-[none]"
+            : "";
+
         return (
           <div
             key={idx}
             className={cn(
-              "cell relative border-[0.5px] opacity-40 transition-all duration-200 will-change-transform hover:opacity-95 hover:bg-(--hover-color) hover:[box-shadow:0px_0px_30px_0px_var(--hover-glow-color)_inset,0px_0px_22px_0px_var(--hover-glow-color)] dark:shadow-[0px_0px_40px_1px_var(--cell-shadow-color)_inset]",
-              clickedCell && rotateColors && "animate-cell-ripple-color fill-mode-[none]",
-              clickedCell && !rotateColors && "animate-cell-ripple fill-mode-[none]",
+              "cell relative border-[0.5px] opacity-60 transition-opacity duration-200 hover:opacity-95 hover:bg-(--hover-color) hover:[box-shadow:0px_0px_22px_0px_var(--hover-glow-color)_inset,0px_0px_16px_0px_var(--hover-glow-color)] dark:shadow-[0px_0px_16px_1px_var(--cell-shadow-color)_inset]",
+              rippleAnimationClass,
+              clickedCell && inRippleRange && "will-change-transform",
               !interactive && "pointer-events-none"
             )}
             style={{

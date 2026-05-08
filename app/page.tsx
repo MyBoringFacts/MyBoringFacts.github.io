@@ -7,6 +7,7 @@ import { AboutSection } from "@/components/sections/about";
 import { ExperienceSection } from "@/components/sections/experience";
 import { ProjectsSection } from "@/components/sections/projects";
 import { ContactSection } from "@/components/sections/contact";
+import { MeCtaSection } from "@/components/sections/me-cta";
 import { useTheme } from "@/components/theme-provider";
 
 export default function Portfolio() {
@@ -27,6 +28,7 @@ export default function Portfolio() {
       <ExperienceSection />
       <ProjectsSection />
       <ContactSection />
+      <MeCtaSection />
     </main>
   );
 }

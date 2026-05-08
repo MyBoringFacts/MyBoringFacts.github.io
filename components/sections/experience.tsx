@@ -51,7 +51,7 @@ export function ExperienceSection() {
     <section id="experience" className="relative py-32 px-4 md:px-8" ref={ref}>
       <div className="max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={false}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
         >
@@ -77,7 +77,7 @@ export function ExperienceSection() {
           {experiences.map((exp, idx) => (
             <motion.div
               key={exp.title}
-              initial={{ opacity: 0, y: 40 }}
+              initial={false}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 + idx * 0.2 }}
               className={`relative mb-12 pl-8 md:pl-0 ${
