@@ -319,7 +319,7 @@ export default function MePage() {
             style={{ color: isColorful ? "#fafafa" : "#171717" }}
           >
             {/* PROMPT: replace with your own one-line title for this page */}
-            The things that keep me me.
+            The things I like to do.
           </h1>
           <p
             className="mx-auto max-w-2xl text-lg leading-relaxed"
