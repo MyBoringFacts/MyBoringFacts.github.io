@@ -5,12 +5,12 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Thadoe Hein | AI Engineer",
-  description: "AI Engineer building production RAG, computer vision, and machine learning systems measured by useful outcomes.",
+  description: "I’m Thadoe, an AI engineer working across document systems, computer vision, and machine learning infrastructure.",
   keywords: ["AI Engineer", "Machine Learning", "Computer Vision", "MLOps", "LLM", "RAG", "Python"],
   authors: [{ name: "Thadoe Hein" }],
   openGraph: {
     title: "Thadoe Hein | AI Engineer",
-    description: "Production RAG, computer vision, and machine learning systems measured by useful outcomes.",
+    description: "AI engineering projects across document systems, computer vision, and machine learning infrastructure.",
     type: "website",
   },
   icons: {

@@ -17,8 +17,8 @@ export function SystemDiagram({ project }: { project: Project }) {
     <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#0c0e13] p-5 sm:p-8">
       <div className="pointer-events-none absolute inset-0 opacity-35 [background-image:linear-gradient(rgba(255,255,255,.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.08)_1px,transparent_1px)] [background-size:42px_42px]" />
       <div className="relative flex items-center justify-between font-mono text-[8px] uppercase tracking-[0.18em] text-white/35">
-        <span>System topology / {project.index}</span>
-        <span style={{ color: accent }}>Nominal</span>
+        <span>System map / {project.index}</span>
+        <span style={{ color: accent }}>Running</span>
       </div>
       <div className="relative mt-12 grid gap-5 md:grid-cols-4 md:gap-3">
         <div className="absolute left-[8%] right-[8%] top-8 hidden h-px bg-white/15 md:block" />

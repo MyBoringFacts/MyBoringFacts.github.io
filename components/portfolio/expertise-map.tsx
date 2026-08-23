@@ -94,7 +94,7 @@ export function ExpertiseMap() {
                   </span>
                 </div>
                 <CardVisual index={index} accent={item.accent} />
-                <p className="mt-7 font-mono text-[8px] uppercase tracking-[0.18em] text-white/40">Applied capability</p>
+                <p className="mt-7 font-mono text-[8px] uppercase tracking-[0.18em] text-white/40">Part of my toolkit</p>
                 <div className="mt-2 flex items-end justify-between gap-5">
                   <div>
                     <h3 className="text-2xl font-semibold tracking-[-0.04em]">{item.title}</h3>
@@ -109,14 +109,14 @@ export function ExpertiseMap() {
                 <div className={`absolute -right-20 -top-20 size-64 rounded-full blur-3xl ${style.glow}`} />
                 <DialogHeader className="relative text-left">
                   <div className="flex items-center gap-3 font-mono text-[9px] uppercase tracking-[0.2em] text-white/40">
-                    <span className={`size-2 rounded-full ${style.dot}`} /> Signal {item.code} / Applied capability
+                    <span className={`size-2 rounded-full ${style.dot}`} /> Area {item.code} / What I work with
                   </div>
                   <DialogTitle className="pt-5 text-4xl font-semibold leading-none tracking-[-0.055em] sm:text-6xl">{item.title}</DialogTitle>
                   <DialogDescription className="max-w-xl pt-4 text-base leading-relaxed text-white/60">{item.detail}</DialogDescription>
                 </DialogHeader>
                 <div className="relative mt-10 grid gap-3 sm:grid-cols-2">
                   <div className="rounded-2xl border border-white/10 bg-white/[.04] p-5">
-                    <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-white/35">Evidence</p>
+                    <p className="font-mono text-[8px] uppercase tracking-[0.18em] text-white/35">A real example</p>
                     <p className="mt-3 text-base leading-relaxed">{item.proof}</p>
                   </div>
                   <div className="rounded-2xl border border-white/10 bg-white/[.04] p-5">
@@ -127,7 +127,7 @@ export function ExpertiseMap() {
                   </div>
                 </div>
                 <DialogClose className="relative mt-8 min-h-11 rounded-full border border-white/20 px-5 font-mono text-[9px] uppercase tracking-[0.16em] text-white/65 transition hover:bg-white hover:text-[#111318] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#c7f26b]">
-                  Close signal
+                  Close
                 </DialogClose>
               </div>
             </DialogContent>

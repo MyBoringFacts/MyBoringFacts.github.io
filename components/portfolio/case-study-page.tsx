@@ -28,7 +28,7 @@ export function CaseStudyPage({ project }: { project: Project }) {
             <ArrowLeft className="size-4" aria-hidden="true" /> All work
           </Link>
           <div className="flex items-center gap-3">
-            <span className="hidden font-mono text-[9px] uppercase tracking-[0.16em] text-black/40 sm:inline">Case file {project.index} / 03</span>
+            <span className="hidden font-mono text-[9px] uppercase tracking-[0.16em] text-black/40 sm:inline">Project {project.index} / 03</span>
             <a href={site.resume} download className="inline-flex min-h-11 items-center gap-2 rounded-full border border-black/20 px-4 font-mono text-[9px] uppercase tracking-[0.14em] transition hover:bg-[#111318] hover:text-white">
               Résumé <Download className="size-3.5" aria-hidden="true" />
             </a>
@@ -63,13 +63,13 @@ export function CaseStudyPage({ project }: { project: Project }) {
         <div className="mx-auto max-w-[1500px]">
           <Reveal className="grid gap-12 lg:grid-cols-2">
             <div className="border-t border-white/15 pt-6">
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/35">01 / The constraint</p>
-              <h2 className="mt-5 text-4xl font-semibold tracking-[-0.05em] md:text-5xl">The problem worth solving.</h2>
+              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/35">01 / Where it started</p>
+              <h2 className="mt-5 text-4xl font-semibold tracking-[-0.05em] md:text-5xl">The problem I was trying to solve.</h2>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-white/55">{project.challenge}</p>
             </div>
             <div className="border-t border-white/15 pt-6">
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/35">02 / The approach</p>
-              <h2 className="mt-5 text-4xl font-semibold tracking-[-0.05em] md:text-5xl">Design the whole system.</h2>
+              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/35">02 / What I built</p>
+              <h2 className="mt-5 text-4xl font-semibold tracking-[-0.05em] md:text-5xl">My approach.</h2>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-white/55">{project.approach}</p>
             </div>
           </Reveal>
@@ -78,9 +78,9 @@ export function CaseStudyPage({ project }: { project: Project }) {
             <div className="mb-7 flex items-end justify-between gap-5">
               <div>
                 <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/35">03 / Architecture</p>
-                <h2 className="mt-4 text-4xl font-semibold tracking-[-0.05em] md:text-6xl">From input to outcome.</h2>
+                <h2 className="mt-4 text-4xl font-semibold tracking-[-0.05em] md:text-6xl">How the pieces fit together.</h2>
               </div>
-              <span className="hidden font-mono text-[8px] uppercase tracking-[0.16em] text-white/30 sm:block">Conceptual flow / materials pending</span>
+              <span className="hidden font-mono text-[8px] uppercase tracking-[0.16em] text-white/30 sm:block">Simplified system flow</span>
             </div>
             <SystemDiagram project={project} />
           </Reveal>
@@ -90,8 +90,8 @@ export function CaseStudyPage({ project }: { project: Project }) {
       <section className="px-5 py-24 md:px-9 md:py-32">
         <div className="mx-auto grid max-w-[1500px] gap-14 lg:grid-cols-[.7fr_1.3fr]">
           <Reveal>
-            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-black/45">04 / Outcomes</p>
-            <h2 className="mt-5 text-5xl font-semibold leading-none tracking-[-0.065em] md:text-7xl">Evidence, not adjectives.</h2>
+            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-black/45">04 / What changed</p>
+            <h2 className="mt-5 text-5xl font-semibold leading-none tracking-[-0.065em] md:text-7xl">What came out of it.</h2>
           </Reveal>
           <Reveal>
             <ol className="divide-y divide-black/20 border-y border-black/20">
@@ -114,7 +114,7 @@ export function CaseStudyPage({ project }: { project: Project }) {
         <div className="mx-auto grid max-w-[1500px] gap-8 md:grid-cols-2">
           <Reveal>
             <Link href={`/work/${nextProject.slug}`} className="group block rounded-[2rem] bg-[#111318] p-7 text-white transition hover:-translate-y-1 hover:shadow-2xl md:p-10">
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/35">Next case file / {nextProject.index}</p>
+              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/35">Next project / {nextProject.index}</p>
               <div className="mt-8 flex items-end justify-between gap-6">
                 <div>
                   <h2 className="text-3xl font-semibold tracking-[-0.045em] md:text-5xl">{nextProject.shortTitle}</h2>
@@ -126,7 +126,7 @@ export function CaseStudyPage({ project }: { project: Project }) {
           </Reveal>
           <Reveal delay={0.06}>
             <a href={`mailto:${site.email}`} className="group block rounded-[2rem] border border-black/20 p-7 transition hover:bg-white/40 md:p-10">
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-black/40">Discuss the work</p>
+              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-black/40">Want to ask about it?</p>
               <div className="mt-8 flex items-end justify-between gap-6">
                 <div>
                   <h2 className="text-3xl font-semibold tracking-[-0.045em] md:text-5xl">Start a conversation.</h2>

@@ -33,7 +33,7 @@ export function SignalVisual({ compact = false }: { compact?: boolean }) {
         </motion.div>
       </div>
       <div className="absolute bottom-5 left-5 right-5 grid grid-cols-3 gap-2 font-mono text-[7px] uppercase tracking-[0.12em] text-white/40 sm:bottom-7 sm:left-7 sm:right-7 sm:text-[8px]">
-        <div className="border-t border-white/15 pt-2 sm:pt-3"><span className="block text-sm text-white sm:text-lg">128</span>dimensions</div>
+        <div className="border-t border-white/15 pt-2 sm:pt-3"><span className="block text-sm text-white sm:text-lg">512</span>dimensions</div>
         <div className="border-t border-white/15 pt-2 sm:pt-3"><span className="block text-sm text-white sm:text-lg">.93</span>confidence</div>
         <div className="border-t border-white/15 pt-2 sm:pt-3"><span className="block text-sm text-[#c7f26b] sm:text-lg">live</span>system</div>
       </div>

@@ -54,21 +54,21 @@ export function PortfolioHome() {
             className="pb-3 lg:pr-8"
           >
             <div className="mb-8 flex items-center gap-3 font-mono text-[9px] uppercase tracking-[0.2em] text-black/55">
-              <CircleDot className="size-3 text-[#ff6b35]" /> Applied intelligence / Portfolio 2026
+              <CircleDot className="size-3 text-[#ff6b35]" /> Thadoe Hein / AI Engineer
             </div>
             <h1 className="max-w-5xl text-[clamp(4.3rem,10.5vw,10.4rem)] font-semibold leading-[0.78] tracking-[-0.085em]">
-              AI, made
-              <span className="block pl-[.35em] text-[#ff6b35]">useful.</span>
+              AI that
+              <span className="block pl-[.35em] text-[#ff6b35]">works.</span>
             </h1>
             <div className="mt-12 grid gap-8 border-t border-black/20 pt-6 sm:grid-cols-[1.2fr_.8fr]">
               <p className="max-w-xl text-lg leading-relaxed tracking-[-0.02em] text-black/65 md:text-xl">
-                I&apos;m Thadoe Hein. I turn models into reliable products—systems that see, retrieve, reason, and create measurable value.
+                Hi, I&apos;m Thadoe. I like taking messy, real-world problems and turning them into AI systems people can actually use.
               </p>
               <div className="flex flex-col items-start gap-3 sm:items-end">
                 <a href="#work" className="group inline-flex min-h-12 items-center gap-5 rounded-full bg-[#111318] px-6 text-sm font-semibold text-white transition hover:bg-[#ff6b35] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#111318]">
-                  Examine the proof <ArrowDownRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:translate-y-1" aria-hidden="true" />
+                  See what I&apos;ve built <ArrowDownRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:translate-y-1" aria-hidden="true" />
                 </a>
-                <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-black/40">03 production case files</span>
+                <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-black/40">Three projects, from problem to result</span>
               </div>
             </div>
           </motion.div>
@@ -96,10 +96,10 @@ export function PortfolioHome() {
         <div className="mx-auto max-w-[1500px]">
           <Reveal className="mb-12 grid gap-6 border-b border-black/20 pb-10 md:grid-cols-2 md:items-end">
             <div>
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-black/45">Expertise map / 06 signals</p>
+              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-black/45">What I work with / 06 areas</p>
               <h2 className="mt-5 text-5xl font-semibold leading-none tracking-[-0.065em] md:text-7xl">How I build.</h2>
             </div>
-            <p className="max-w-lg text-base leading-relaxed text-black/60 md:justify-self-end">Six connected capabilities spanning model behavior, production infrastructure, and the people using the result. Select any signal to inspect the evidence.</p>
+            <p className="max-w-lg text-base leading-relaxed text-black/60 md:justify-self-end">These are the areas I keep coming back to. Open a card to see the tools I use and a real example from my work.</p>
           </Reveal>
           <ExpertiseMap />
         </div>
@@ -109,10 +109,10 @@ export function PortfolioHome() {
         <div className="mx-auto max-w-[1500px]">
           <Reveal className="grid gap-6 border-b border-white/15 pb-10 md:grid-cols-2 md:items-end">
             <div>
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#c7f26b]">Selected systems / 2025</p>
-              <h2 className="mt-5 text-5xl font-semibold leading-none tracking-[-0.065em] md:text-7xl">Proof of work.</h2>
+              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#c7f26b]">Selected projects / 2025</p>
+              <h2 className="mt-5 text-5xl font-semibold leading-none tracking-[-0.065em] md:text-7xl">A few things I&apos;ve built.</h2>
             </div>
-            <p className="max-w-lg text-base leading-relaxed text-white/50 md:justify-self-end">Three systems shaped around latency, accuracy, cost, and human time. Open a case file for the engineering decisions behind each result.</p>
+            <p className="max-w-lg text-base leading-relaxed text-white/50 md:justify-self-end">Each one started with a problem I wanted to understand. Here is what I tried, how the pieces fit together, and what I learned.</p>
           </Reveal>
 
           <div className="divide-y divide-white/15">
@@ -147,9 +147,9 @@ export function PortfolioHome() {
       <section id="experience" className="scroll-mt-10 px-5 py-24 md:px-9 md:py-32">
         <div className="mx-auto grid max-w-[1500px] gap-14 lg:grid-cols-[.68fr_1.32fr]">
           <Reveal>
-            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-black/45">Trajectory / 2024—now</p>
-            <h2 className="mt-5 text-5xl font-semibold leading-none tracking-[-0.065em] md:text-7xl">Learning by shipping.</h2>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-black/60">From applied research to production platforms, I work across the AI lifecycle with the outcome in view.</p>
+            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-black/45">Where I&apos;ve worked / 2024—now</p>
+            <h2 className="mt-5 text-5xl font-semibold leading-none tracking-[-0.065em] md:text-7xl">Still learning, always building.</h2>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-black/60">My path has moved through research labs, classrooms, startups, and banking. Each place taught me a different part of building AI responsibly.</p>
           </Reveal>
           <Reveal>
             <ol className="divide-y divide-black/20 border-y border-black/20">
@@ -174,9 +174,9 @@ export function PortfolioHome() {
 
       <section className="border-y border-black/15 bg-white/30 px-5 py-20 md:px-9 md:py-24">
         <Reveal className="mx-auto grid max-w-[1500px] gap-10 lg:grid-cols-[.4fr_.6fr] lg:items-start">
-          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-black/45">Working principle / 01</p>
+          <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-black/45">Something I&apos;ve learned</p>
           <blockquote className="text-4xl font-semibold leading-[1.04] tracking-[-0.055em] md:text-6xl">
-            “A model is only impressive when the system around it makes someone&apos;s work better.”
+            “I enjoy the part between a promising model and a system someone can rely on.”
           </blockquote>
         </Reveal>
       </section>
@@ -184,11 +184,11 @@ export function PortfolioHome() {
       <footer className="bg-[#111318] px-5 py-20 text-white md:px-9 md:py-28">
         <Reveal className="mx-auto grid max-w-[1500px] gap-14 lg:grid-cols-[1.2fr_.8fr] lg:items-end">
           <div>
-            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#c7f26b]">Next signal</p>
-            <h2 className="mt-6 max-w-5xl text-[clamp(3.8rem,8vw,8rem)] font-semibold leading-[0.84] tracking-[-0.075em]">Let&apos;s build something that earns attention.</h2>
+            <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#c7f26b]">Say hello</p>
+            <h2 className="mt-6 max-w-5xl text-[clamp(3.8rem,8vw,8rem)] font-semibold leading-[0.84] tracking-[-0.075em]">Working on a hard AI problem?</h2>
           </div>
           <div className="lg:justify-self-end">
-            <p className="max-w-md text-base leading-relaxed text-white/55">I&apos;m interested in AI engineering roles where research meets product, and where quality is measured in the real world.</p>
+            <p className="max-w-md text-base leading-relaxed text-white/55">I&apos;m always happy to talk about AI engineering, document systems, computer vision, or the problem your team is trying to solve.</p>
             <a href={`mailto:${site.email}`} className="group mt-8 inline-flex min-h-14 items-center gap-6 rounded-full bg-[#c7f26b] px-7 font-semibold text-[#111318] transition hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c7f26b]">
               Start a conversation <ArrowUpRight className="size-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" aria-hidden="true" />
             </a>
