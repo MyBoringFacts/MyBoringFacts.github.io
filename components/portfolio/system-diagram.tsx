@@ -16,7 +16,7 @@ export function SystemDiagram({ project }: { project: Project }) {
   return (
     <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#0c0e13] p-5 sm:p-8">
       <div className="pointer-events-none absolute inset-0 opacity-35 [background-image:linear-gradient(rgba(255,255,255,.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.08)_1px,transparent_1px)] [background-size:42px_42px]" />
-      <div className="relative flex items-center justify-between font-mono text-[8px] uppercase tracking-[0.18em] text-white/35">
+      <div className="relative flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-white/55">
         <span>System map / {project.index}</span>
         <span style={{ color: accent }}>Running</span>
       </div>
@@ -40,7 +40,7 @@ export function SystemDiagram({ project }: { project: Project }) {
         ))}
       </div>
       <div className="relative mt-12 flex flex-wrap gap-2 border-t border-white/10 pt-5">
-        {project.stack.map((tool) => <span key={tool} className="rounded-full border border-white/15 px-3 py-1.5 font-mono text-[8px] uppercase tracking-[0.14em] text-white/55">{tool}</span>)}
+        {project.stack.map((tool) => <span key={tool} className="rounded-full border border-white/20 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.1em] text-white/70">{tool}</span>)}
       </div>
     </div>
   );

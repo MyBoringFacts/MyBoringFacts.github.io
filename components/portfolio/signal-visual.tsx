@@ -14,7 +14,7 @@ export function SignalVisual({ compact = false }: { compact?: boolean }) {
         animate={reduceMotion ? { top: "45%" } : { top: ["12%", "88%", "12%"] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
       />
-      <div className="absolute left-[9%] top-[10%] font-mono text-[8px] tracking-[0.18em] text-white/35 sm:text-[9px]">
+      <div className="absolute left-[9%] top-[10%] font-mono text-[10px] tracking-[0.14em] text-white/55 sm:text-[11px]">
         LIVE INFERENCE / 06:42:18
       </div>
       <div className={`absolute left-1/2 top-[46%] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/15 ${compact ? "size-[56%] max-h-[75%] max-w-[34%]" : "size-[54%]"}`}>
@@ -32,7 +32,7 @@ export function SignalVisual({ compact = false }: { compact?: boolean }) {
           <span className="absolute left-1/2 top-0 size-3 -translate-x-1/2 rounded-full bg-[#c7f26b] shadow-[0_0_18px_#c7f26b]" />
         </motion.div>
       </div>
-      <div className="absolute bottom-5 left-5 right-5 grid grid-cols-3 gap-2 font-mono text-[7px] uppercase tracking-[0.12em] text-white/40 sm:bottom-7 sm:left-7 sm:right-7 sm:text-[8px]">
+      <div className="absolute bottom-5 left-5 right-5 grid grid-cols-3 gap-2 font-mono text-[10px] uppercase tracking-[0.09em] text-white/55 sm:bottom-7 sm:left-7 sm:right-7">
         <div className="border-t border-white/15 pt-2 sm:pt-3"><span className="block text-sm text-white sm:text-lg">512</span>dimensions</div>
         <div className="border-t border-white/15 pt-2 sm:pt-3"><span className="block text-sm text-white sm:text-lg">.93</span>confidence</div>
         <div className="border-t border-white/15 pt-2 sm:pt-3"><span className="block text-sm text-[#c7f26b] sm:text-lg">live</span>system</div>
