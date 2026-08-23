@@ -169,7 +169,7 @@ export const projects: Project[] = [
 
 export const experience = [
   {
-    period: "Jun—Aug 2026",
+    period: "Jun 2026 - Current",
     role: "AI Engineer",
     company: "CB Bank PCL",
     detail: "Worked on an enterprise AI platform, AI-assisted document processing, data-quality standards, and technical coordination with external partners.",
