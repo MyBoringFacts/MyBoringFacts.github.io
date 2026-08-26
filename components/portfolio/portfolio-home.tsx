@@ -56,7 +56,7 @@ export function PortfolioHome() {
           >
             <div className="mb-8 flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-black/65">
               <CircleDot className="size-3 text-[#ff6b35]" aria-hidden="true" />
-              Data &amp; AI Engineer
+              Thadoe Hein / Data &amp; AI Engineer
             </div>
             <h1 className="max-w-5xl text-[clamp(3.9rem,9.5vw,9rem)] font-semibold leading-[0.82] tracking-[-0.075em]">
               I build with{" "}
@@ -88,11 +88,11 @@ export function PortfolioHome() {
       <section className="overflow-hidden border-y border-black/15 bg-[#c7f26b] py-3" aria-label="AI disciplines">
         <motion.div
           className="flex w-max items-center"
-          animate={reduceMotion ? undefined : { x: ["0%", "-50%"] }}
-          transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+          animate={reduceMotion ? undefined : { x: ["0%", "-33.333333%"] }}
+          transition={{ duration: 20, repeat: Infinity, repeatType: "loop", ease: "linear" }}
         >
-          {[0, 1].map((group) => (
-            <div key={group} className="flex shrink-0 items-center" aria-hidden={group === 1 ? "true" : undefined}>
+          {[0, 1, 2].map((group) => (
+            <div key={group} className="flex shrink-0 items-center" aria-hidden={group > 0 ? "true" : undefined}>
               {keywords.map((keyword) => (
                 <span key={`${group}-${keyword}`} className="inline-flex items-center gap-7 whitespace-nowrap px-7 font-mono text-[11px] font-semibold uppercase tracking-[0.14em]">
                   {keyword} <span className="size-1.5 rounded-full bg-[#111318]" />

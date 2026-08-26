@@ -171,7 +171,7 @@ export const experience = [
   {
     period: "Jun 2026 - Current",
     role: "AI Engineer",
-    company: "CB Bank PCL",
+    company: "CB Bank PCL · Data and AI Team",
     detail: "Worked on an enterprise AI platform, AI-assisted document processing, data-quality standards, and technical coordination with external partners.",
     proof: "Enterprise AI · Banking",
   },

@@ -49,7 +49,7 @@ function CardVisual({ index, accent, reduceMotion }: { index: number; accent: Ac
   return (
     <div aria-hidden="true" className="relative mt-8 h-28 overflow-hidden rounded-2xl border border-white/10 bg-[#171a21]">
       <div className="absolute inset-0 opacity-35 [background-image:linear-gradient(rgba(255,255,255,.09)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.09)_1px,transparent_1px)] [background-size:28px_28px]" />
-      {index % 3 === 0 && (
+      {index === 0 && (
         <>
           <div className="absolute left-[18%] top-1/2 h-px w-[64%] bg-white/20" />
           <motion.div
@@ -64,7 +64,7 @@ function CardVisual({ index, accent, reduceMotion }: { index: number; accent: Ac
           />
         </>
       )}
-      {index % 3 === 1 && (
+      {index === 1 && (
         <>
           <motion.div
             className="absolute -inset-x-12 inset-y-0 -skew-x-[25deg] bg-[repeating-linear-gradient(90deg,transparent_0_18px,rgba(255,255,255,.12)_18px_32px)]"
@@ -79,7 +79,7 @@ function CardVisual({ index, accent, reduceMotion }: { index: number; accent: Ac
           />
         </>
       )}
-      {index % 3 === 2 && (
+      {index === 2 && (
         <>
           <motion.div
             className={`absolute left-1/2 top-1/2 size-24 -translate-x-1/2 -translate-y-1/2 rounded-full ${style.glow} blur-xl`}
@@ -92,6 +92,67 @@ function CardVisual({ index, accent, reduceMotion }: { index: number; accent: Ac
             transition={{ duration: 9, repeat: Infinity, ease: "linear" }}
           />
           <div className={`absolute left-1/2 top-1/2 size-3 -translate-x-1/2 -translate-y-1/2 rounded-full ${style.dot}`} />
+        </>
+      )}
+      {index === 3 && (
+        <>
+          <div className="absolute bottom-5 left-7 right-7 h-px bg-white/20" />
+          <div className="absolute bottom-5 left-1/2 flex h-20 -translate-x-1/2 items-end gap-3">
+            {[0.35, 0.58, 0.82, 0.5, 0.7].map((height, barIndex) => (
+              <motion.div
+                key={height}
+                className={`w-3 rounded-t-sm ${style.dot}`}
+                style={{ height: `${height * 100}%`, transformOrigin: "bottom" }}
+                animate={reduceMotion ? undefined : { scaleY: [0.35, 1, 0.55, 1] }}
+                transition={{ duration: 3.4, repeat: Infinity, delay: barIndex * 0.16, ease: "easeInOut" }}
+              />
+            ))}
+          </div>
+          <motion.div
+            className="absolute left-[22%] top-5 size-2 rounded-full bg-white"
+            animate={reduceMotion ? undefined : { x: [0, 180, 0], opacity: [0.35, 1, 0.35] }}
+            transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }}
+          />
+        </>
+      )}
+      {index === 4 && (
+        <>
+          <div className="absolute left-1/2 top-1/2 h-px w-[58%] -translate-x-1/2 -translate-y-1/2 rotate-[18deg] bg-white/20" />
+          <div className="absolute left-1/2 top-1/2 h-px w-[58%] -translate-x-1/2 -translate-y-1/2 -rotate-[18deg] bg-white/20" />
+          {[
+            "left-[20%] top-[28%]",
+            "right-[20%] top-[28%]",
+            "left-[20%] bottom-[22%]",
+            "right-[20%] bottom-[22%]",
+          ].map((position, nodeIndex) => (
+            <motion.span
+              key={position}
+              className={`absolute size-3 rounded-full border border-white/30 ${position} ${style.dot}`}
+              animate={reduceMotion ? undefined : { scale: [0.75, 1.35, 0.75], opacity: [0.45, 1, 0.45] }}
+              transition={{ duration: 2.8, repeat: Infinity, delay: nodeIndex * 0.35, ease: "easeInOut" }}
+            />
+          ))}
+          <motion.span
+            className={`absolute left-1/2 top-1/2 size-7 -translate-x-1/2 -translate-y-1/2 rounded-full ${style.dot} shadow-[0_0_28px_currentColor]`}
+            animate={reduceMotion ? undefined : { rotate: 360, scale: [0.9, 1.08, 0.9] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+          />
+        </>
+      )}
+      {index === 5 && (
+        <>
+          {[0, 1, 2].map((layer) => (
+            <motion.div
+              key={layer}
+              className="absolute left-[21%] h-9 w-[58%] rounded-lg border border-white/20 bg-[#1d212a]"
+              style={{ top: `${18 + layer * 21}%` }}
+              animate={reduceMotion ? undefined : { x: [layer % 2 === 0 ? -8 : 8, layer % 2 === 0 ? 8 : -8, layer % 2 === 0 ? -8 : 8] }}
+              transition={{ duration: 4 + layer * 0.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <span className={`absolute left-3 top-1/2 size-2 -translate-y-1/2 rounded-full ${style.dot}`} />
+              <span className="absolute left-8 right-3 top-1/2 h-px -translate-y-1/2 bg-white/15" />
+            </motion.div>
+          ))}
         </>
       )}
     </div>
