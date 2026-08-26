@@ -50,11 +50,11 @@ export const expertise: Expertise[] = [
   },
   {
     code: "02",
-    title: "Computer Vision",
-    summary: "Models that make sense of messy videos, receipts, and images.",
-    detail: "I like the practical side of computer vision: collecting imperfect data, reducing labeling work, tuning the model, and designing the interface around what it gets wrong.",
-    tools: ["YOLOv11", "ArcFace", "Azure AI", "OpenCV"],
-    proof: "Reached 0.93 text detection accuracy on Thai receipts and built selfie-based retrieval across event footage.",
+    title: "Data Governance",
+    summary: "Clear standards that make enterprise data safer and more useful.",
+    detail: "I work on the practical foundations AI depends on: shared data definitions, quality standards, validation, and clear coordination between the teams that produce and use data.",
+    tools: ["Data quality", "Standards", "Validation", "Documentation"],
+    proof: "Helped shape data-quality standards for an enterprise AI platform in banking and coordinated technical requirements with external partners.",
     accent: "lime",
   },
   {

@@ -16,6 +16,8 @@ import { Reveal } from "@/components/portfolio/reveal";
 import { SignalVisual } from "@/components/portfolio/signal-visual";
 import { experience, projects, site } from "@/lib/portfolio-data";
 
+const keywords = ["Data", "NLP", "RAG", "Data Governance", "Computer Vision", "AI Systems", "Evaluation"];
+
 export function PortfolioHome() {
   const reduceMotion = useReducedMotion();
 
@@ -53,12 +55,14 @@ export function PortfolioHome() {
             transition={{ duration: reduceMotion ? 0 : 0.7 }}
             className="pb-3 lg:pr-8"
           >
-            <div className="mb-8 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.17em] text-black/60">
-              <CircleDot className="size-3 text-[#ff6b35]" /> Thadoe Hein / AI Engineer
+            <div className="mb-8 inline-flex items-center gap-4 border-y border-black/20 py-3 pr-5 font-mono text-[11px] uppercase tracking-[0.16em] text-black/65">
+              <span className="grid size-8 place-items-center rounded-full bg-[#111318] text-[10px] font-semibold text-[#c7f26b]">TH</span>
+              <span><strong className="font-semibold text-black">Thadoe Hein</strong> / AI Engineer</span>
+              <CircleDot className="size-3 text-[#ff6b35]" aria-hidden="true" />
             </div>
-            <h1 className="max-w-5xl text-[clamp(4.3rem,10.5vw,10.4rem)] font-semibold leading-[0.78] tracking-[-0.085em]">
-              AI that
-              <span className="block pl-[.35em] text-[#ff6b35]">works.</span>
+            <h1 className="max-w-5xl text-[clamp(3.9rem,9.5vw,9rem)] font-semibold leading-[0.82] tracking-[-0.075em]">
+              I build AI{" "}
+              <span className="block text-[#ff6b35]">people can use.</span>
             </h1>
             <div className="mt-12 grid gap-8 border-t border-black/20 pt-6 sm:grid-cols-[1.2fr_.8fr]">
               <p className="max-w-xl text-lg leading-relaxed tracking-[-0.02em] text-black/65 md:text-xl">
@@ -83,13 +87,22 @@ export function PortfolioHome() {
         </div>
       </section>
 
-      <section className="border-y border-black/15 bg-[#c7f26b] py-3" aria-label="Portfolio highlights">
-        <div className="mx-auto flex max-w-[1500px] min-w-max items-center justify-around gap-10 px-5 font-mono text-[10px] font-semibold uppercase tracking-[0.15em]">
-          <span>90% faster processing</span>
-          <span>0.93 detection accuracy</span>
-          <span>~30% lower AI costs</span>
-          <span>Production RAG</span>
-        </div>
+      <section className="overflow-hidden border-y border-black/15 bg-[#c7f26b] py-3" aria-label="AI disciplines">
+        <motion.div
+          className="flex w-max items-center"
+          animate={reduceMotion ? undefined : { x: ["0%", "-50%"] }}
+          transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+        >
+          {[0, 1].map((group) => (
+            <div key={group} className="flex shrink-0 items-center" aria-hidden={group === 1 ? "true" : undefined}>
+              {keywords.map((keyword) => (
+                <span key={`${group}-${keyword}`} className="inline-flex items-center gap-7 whitespace-nowrap px-7 font-mono text-[11px] font-semibold uppercase tracking-[0.14em]">
+                  {keyword} <span className="size-1.5 rounded-full bg-[#111318]" />
+                </span>
+              ))}
+            </div>
+          ))}
+        </motion.div>
       </section>
 
       <section id="expertise" className="scroll-mt-10 px-5 py-24 md:px-9 md:py-32">

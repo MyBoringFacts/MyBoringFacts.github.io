@@ -5,7 +5,7 @@ import {
   ChartNoAxesCombined,
   CloudCog,
   Layers3,
-  ScanSearch,
+  ShieldCheck,
   Workflow,
 } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
@@ -20,7 +20,7 @@ import {
 } from "@/components/ui/dialog";
 import { expertise, type Accent } from "@/lib/portfolio-data";
 
-const icons = [BrainCircuit, ScanSearch, Workflow, ChartNoAxesCombined, CloudCog, Layers3];
+const icons = [BrainCircuit, ShieldCheck, Workflow, ChartNoAxesCombined, CloudCog, Layers3];
 
 const accentStyles: Record<Accent, { dot: string; border: string; ink: string; glow: string }> = {
   orange: {
