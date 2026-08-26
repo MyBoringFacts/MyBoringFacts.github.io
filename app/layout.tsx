@@ -4,13 +4,13 @@ import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Thadoe Hein | AI Engineer",
-  description: "I’m Thadoe, an AI engineer working across document systems, computer vision, and machine learning infrastructure.",
-  keywords: ["AI Engineer", "Machine Learning", "Computer Vision", "MLOps", "LLM", "RAG", "Python"],
+  title: "Thadoe Hein | Data & AI Engineer",
+  description: "Data and AI engineering across document intelligence, RAG, machine learning systems, evaluation, and data governance.",
+  keywords: ["Data and AI Engineer", "Data Governance", "Machine Learning", "Computer Vision", "MLOps", "LLM", "RAG", "Python"],
   authors: [{ name: "Thadoe Hein" }],
   openGraph: {
-    title: "Thadoe Hein | AI Engineer",
-    description: "AI engineering projects across document systems, computer vision, and machine learning infrastructure.",
+    title: "Thadoe Hein | Data & AI Engineer",
+    description: "Data and AI engineering work across document intelligence, RAG, machine learning systems, evaluation, and governance.",
     type: "website",
   },
   icons: {

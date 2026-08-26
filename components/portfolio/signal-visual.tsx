@@ -1,12 +1,12 @@
 "use client";
 
-import { ArrowRight, Check, Database, Layers3, Rocket } from "lucide-react";
+import { ArrowRight, BrainCircuit, Check, Database, Rocket } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 
 const stages = [
-  { label: "Understand", detail: "Messy data", icon: Database, accent: "text-[#ff6b35]" },
-  { label: "Build", detail: "Model + context", icon: Layers3, accent: "text-[#86a8ff]" },
-  { label: "Ship", detail: "Useful product", icon: Rocket, accent: "text-[#c7f26b]" },
+  { label: "Organize", detail: "Useful data", icon: Database, accent: "text-[#ff6b35]" },
+  { label: "Build", detail: "AI + context", icon: BrainCircuit, accent: "text-[#86a8ff]" },
+  { label: "Deliver", detail: "Useful system", icon: Rocket, accent: "text-[#c7f26b]" },
 ];
 
 export function SignalVisual({ compact = false }: { compact?: boolean }) {
@@ -26,7 +26,7 @@ export function SignalVisual({ compact = false }: { compact?: boolean }) {
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-[#c7f26b] sm:text-[11px]">How I work / 01</p>
-            <h2 className="mt-3 max-w-sm text-2xl font-semibold leading-tight tracking-[-0.04em] sm:text-3xl">From a real problem to a system people can trust.</h2>
+            <h2 className="mt-3 max-w-sm text-2xl font-semibold leading-tight tracking-[-0.04em] sm:text-3xl">Turning data and AI into useful systems.</h2>
           </div>
           <motion.span
             aria-label="System ready"
@@ -67,7 +67,7 @@ export function SignalVisual({ compact = false }: { compact?: boolean }) {
         </div>
 
         <div className="grid grid-cols-3 gap-2 border-t border-white/15 pt-4 font-mono text-[10px] uppercase tracking-[0.07em] text-white/60">
-          <span>Grounded</span>
+          <span>Clear</span>
           <span className="text-center">Evaluated</span>
           <span className="inline-flex items-center justify-end gap-1 text-[#c7f26b]">Deployed <ArrowRight className="size-3" aria-hidden="true" /></span>
         </div>

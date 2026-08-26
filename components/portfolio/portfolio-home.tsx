@@ -25,9 +25,8 @@ export function PortfolioHome() {
     <main className="min-h-screen overflow-hidden bg-[#ebe9e2] text-[#111318] selection:bg-[#c7f26b] selection:text-[#111318]">
       <header className="relative z-40 border-b border-black/15 bg-[#ebe9e2]/90 px-5 backdrop-blur-xl md:px-9">
         <nav className="mx-auto flex h-20 max-w-[1500px] items-center justify-between" aria-label="Primary navigation">
-          <a href="#top" className="flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111318]">
+          <a href="#top" aria-label="Back to top" className="flex items-center font-mono text-[10px] font-semibold uppercase tracking-[0.18em] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111318]">
             <span className="grid size-8 place-items-center rounded-full bg-[#111318] text-[#c7f26b]">TH</span>
-            <span className="hidden sm:inline">{site.name} / {site.role}</span>
           </a>
           <div className="flex items-center gap-2 sm:gap-4">
             <div className="hidden items-center gap-5 font-mono text-[11px] uppercase tracking-[0.14em] text-black/60 lg:flex">
@@ -55,18 +54,17 @@ export function PortfolioHome() {
             transition={{ duration: reduceMotion ? 0 : 0.7 }}
             className="pb-3 lg:pr-8"
           >
-            <div className="mb-8 inline-flex items-center gap-4 border-y border-black/20 py-3 pr-5 font-mono text-[11px] uppercase tracking-[0.16em] text-black/65">
-              <span className="grid size-8 place-items-center rounded-full bg-[#111318] text-[10px] font-semibold text-[#c7f26b]">TH</span>
-              <span><strong className="font-semibold text-black">Thadoe Hein</strong> / AI Engineer</span>
+            <div className="mb-8 flex items-center gap-3 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-black/65">
               <CircleDot className="size-3 text-[#ff6b35]" aria-hidden="true" />
+              Data &amp; AI Engineer
             </div>
             <h1 className="max-w-5xl text-[clamp(3.9rem,9.5vw,9rem)] font-semibold leading-[0.82] tracking-[-0.075em]">
-              I build AI{" "}
-              <span className="block text-[#ff6b35]">people can use.</span>
+              I build with{" "}
+              <span className="block text-[#ff6b35]">data and AI.</span>
             </h1>
             <div className="mt-12 grid gap-8 border-t border-black/20 pt-6 sm:grid-cols-[1.2fr_.8fr]">
               <p className="max-w-xl text-lg leading-relaxed tracking-[-0.02em] text-black/65 md:text-xl">
-                Hi, I&apos;m Thadoe. I like taking messy, real-world problems and turning them into AI systems people can actually use.
+                I work across RAG, machine learning systems, evaluation, and data governance—turning messy, real-world problems into tools people can actually use.
               </p>
               <div className="flex flex-col items-start gap-3 sm:items-end">
                 <a href="#work" className="group inline-flex min-h-12 items-center gap-5 rounded-full bg-[#111318] px-6 text-sm font-semibold text-white transition hover:bg-[#ff6b35] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#111318]">

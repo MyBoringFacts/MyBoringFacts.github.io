@@ -54,7 +54,7 @@ export const expertise: Expertise[] = [
     summary: "Clear standards that make enterprise data safer and more useful.",
     detail: "I work on the practical foundations AI depends on: shared data definitions, quality standards, validation, and clear coordination between the teams that produce and use data.",
     tools: ["Data quality", "Standards", "Validation", "Documentation"],
-    proof: "Helped shape data-quality standards for an enterprise AI platform in banking and coordinated technical requirements with external partners.",
+    proof: "A growing part of my practice: making data quality, validation, standards, and documentation explicit before AI systems depend on them.",
     accent: "lime",
   },
   {
