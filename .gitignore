@@ -12,6 +12,9 @@ __v0_jsx-dev-runtime.ts
 # Common ignores
 node_modules
 .next/
+out/
+*.tsbuildinfo
+next-env.d.ts
 .DS_Store
 
 # Local source material
