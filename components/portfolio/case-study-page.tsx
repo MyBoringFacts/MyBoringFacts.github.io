@@ -113,7 +113,7 @@ export function CaseStudyPage({ project }: { project: Project }) {
       <section className="border-t border-black/15 px-5 py-20 md:px-9 md:py-24">
         <div className="mx-auto grid max-w-[1500px] gap-8 md:grid-cols-2">
           <Reveal>
-            <Link href={`/work/${nextProject.slug}`} className="group block rounded-[2rem] bg-[#111318] p-7 text-white transition hover:-translate-y-1 hover:shadow-2xl md:p-10">
+            <Link href={`/work/${nextProject.slug}`} className="group block h-full rounded-[2rem] bg-[#111318] p-7 text-white transition hover:-translate-y-1 hover:shadow-2xl md:p-10">
               <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/55">Next project / {nextProject.index}</p>
               <div className="mt-8 flex items-end justify-between gap-6">
                 <div>
@@ -125,7 +125,7 @@ export function CaseStudyPage({ project }: { project: Project }) {
             </Link>
           </Reveal>
           <Reveal delay={0.06}>
-            <a href={`mailto:${site.email}`} className="group block rounded-[2rem] border border-black/20 p-7 transition hover:bg-white/40 md:p-10">
+            <a href={`mailto:${site.email}`} className="group block h-full rounded-[2rem] border border-black/20 p-7 transition hover:bg-white/40 md:p-10">
               <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-black/55">Want to ask about it?</p>
               <div className="mt-8 flex items-end justify-between gap-6">
                 <div>

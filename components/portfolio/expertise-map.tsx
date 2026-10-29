@@ -47,7 +47,7 @@ function CardVisual({ index, accent, reduceMotion }: { index: number; accent: Ac
   const style = accentStyles[accent];
 
   return (
-    <div aria-hidden="true" className="relative mt-8 h-28 overflow-hidden rounded-2xl border border-white/10 bg-[#171a21]">
+    <div aria-hidden="true" data-accent={accent} className="expertise-card-visual relative mt-8 h-28 overflow-hidden rounded-2xl border border-white/10 bg-[#171a21]">
       <div className="absolute inset-0 opacity-35 [background-image:linear-gradient(rgba(255,255,255,.09)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.09)_1px,transparent_1px)] [background-size:28px_28px]" />
       {index === 0 && (
         <>
@@ -173,7 +173,7 @@ export function ExpertiseMap() {
             <DialogTrigger asChild>
               <button
                 type="button"
-                className={`group min-h-[340px] rounded-[1.75rem] border bg-[#111318] p-5 text-left text-white shadow-[0_20px_60px_rgba(17,19,24,.1)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_26px_70px_rgba(17,19,24,.18)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111318] ${style.border}`}
+                className={`expertise-card-trigger group min-h-[340px] rounded-[1.75rem] border bg-[#111318] p-5 text-left text-white shadow-[0_20px_60px_rgba(17,19,24,.1)] transition duration-300 hover:shadow-[0_26px_70px_rgba(17,19,24,.18)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#111318] ${style.border}`}
                 aria-label={`Explore ${item.title}`}
               >
                 <div className="flex items-start justify-between">
@@ -193,7 +193,7 @@ export function ExpertiseMap() {
                 </div>
               </button>
             </DialogTrigger>
-            <DialogContent className="max-h-[90vh] overflow-y-auto rounded-[2rem] border-white/10 bg-[#111318] p-0 text-white shadow-2xl sm:max-w-2xl" showCloseButton={false}>
+            <DialogContent className="expertise-dialog-glass max-h-[90vh] overflow-y-auto rounded-[2rem] border-white/10 bg-[#111318] p-0 text-white shadow-2xl sm:max-w-2xl" showCloseButton={false}>
               <div className="relative overflow-hidden p-7 sm:p-10">
                 <div className={`absolute -right-20 -top-20 size-64 rounded-full blur-3xl ${style.glow}`} />
                 <DialogHeader className="relative text-left">

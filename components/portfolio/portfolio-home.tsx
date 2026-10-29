@@ -30,9 +30,9 @@ export function PortfolioHome() {
           </a>
           <div className="flex items-center gap-2 sm:gap-4">
             <div className="hidden items-center gap-5 font-mono text-[11px] uppercase tracking-[0.14em] text-black/60 lg:flex">
+              <a href="#experience" className="transition hover:text-black">Experience</a>
               <a href="#expertise" className="transition hover:text-black">Expertise</a>
               <a href="#work" className="transition hover:text-black">Work</a>
-              <a href="#experience" className="transition hover:text-black">Experience</a>
             </div>
             <a
               href={site.resume}
@@ -64,13 +64,13 @@ export function PortfolioHome() {
             </h1>
             <div className="mt-12 grid gap-8 border-t border-black/20 pt-6 sm:grid-cols-[1.2fr_.8fr]">
               <p className="max-w-xl text-lg leading-relaxed tracking-[-0.02em] text-black/65 md:text-xl">
-                I work across RAG, machine learning systems, evaluation, and data governance—turning messy, real-world problems into tools people can actually use.
+                I build AI systems for real-world use, from enterprise platforms and document processing to RAG, evaluation, and data quality.
               </p>
               <div className="flex flex-col items-start gap-3 sm:items-end">
-                <a href="#work" className="group inline-flex min-h-12 items-center gap-5 rounded-full bg-[#111318] px-6 text-sm font-semibold text-white transition hover:bg-[#ff6b35] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#111318]">
-                  See what I&apos;ve built <ArrowDownRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:translate-y-1" aria-hidden="true" />
+                <a href="#experience" className="group inline-flex min-h-12 items-center gap-5 rounded-full bg-[#111318] px-6 text-sm font-semibold text-white transition hover:bg-[#ff6b35] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#111318]">
+                  Explore my experience <ArrowDownRight className="size-4 transition-transform group-hover:translate-x-1 group-hover:translate-y-1" aria-hidden="true" />
                 </a>
-                <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-black/55">Three projects, from problem to result</span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-black/55">Banking · products · research</span>
               </div>
             </div>
           </motion.div>
@@ -101,6 +101,43 @@ export function PortfolioHome() {
             </div>
           ))}
         </motion.div>
+      </section>
+
+      <section id="experience" className="scroll-mt-10 bg-[#111318] px-5 py-24 text-white md:px-9 md:py-32">
+        <div className="mx-auto max-w-[1500px]">
+          <Reveal className="grid gap-8 border-b border-white/20 pb-10 md:grid-cols-[1.2fr_.8fr] md:items-end">
+            <div>
+              <p className="font-mono text-[11px] font-medium uppercase tracking-[0.17em] text-[#c7f26b]">Professional experience / 2024—now</p>
+              <h2 className="mt-5 text-5xl font-semibold leading-none tracking-[-0.065em] md:text-7xl">Where I&apos;ve put AI to work.</h2>
+            </div>
+            <p className="max-w-lg text-base leading-relaxed text-white/60 md:justify-self-end">Across banking, products, teaching, and research, I&apos;ve worked on the systems and details that make AI useful in practice.</p>
+          </Reveal>
+          <Reveal>
+            <ol className="divide-y divide-white/15">
+              {experience.map((item, index) => (
+                <motion.li
+                  key={item.role}
+                  initial={reduceMotion ? false : { opacity: 0, x: 18 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.35 }}
+                  transition={{ duration: reduceMotion ? 0 : 0.45, delay: reduceMotion ? 0 : index * 0.05 }}
+                  className="group grid gap-5 py-9 transition-colors duration-300 hover:bg-white/[.04] md:grid-cols-[170px_minmax(0,1fr)_190px] md:items-start md:px-3 md:py-12"
+                >
+                  <div>
+                    <span className={`mb-3 block size-2.5 rounded-full ${index === 0 ? "bg-[#ff6b35]" : index === 1 ? "bg-[#86a8ff]" : "bg-[#77a72a]"}`} />
+                    <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-white/55">{item.period}</p>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold tracking-[-0.035em] md:text-3xl">{item.role}</h3>
+                    <p className="mt-2 text-sm font-medium text-white/55">{item.company}</p>
+                    <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/65">{item.detail}</p>
+                  </div>
+                  <p className="font-mono text-[10px] uppercase leading-relaxed tracking-[0.1em] text-[#c7f26b] md:text-right">{item.proof}</p>
+                </motion.li>
+              ))}
+            </ol>
+          </Reveal>
+        </div>
       </section>
 
       <section id="expertise" className="scroll-mt-10 px-5 py-24 md:px-9 md:py-32">
@@ -135,7 +172,7 @@ export function PortfolioHome() {
                     {project.eyebrow}
                   </div>
                   <div>
-                    <h3 className="max-w-3xl text-3xl font-semibold leading-[1.03] tracking-[-0.05em] transition-transform duration-300 group-hover:translate-x-2 md:text-5xl">{project.title}</h3>
+                    <h3 className={`max-w-3xl text-3xl font-semibold leading-[1.03] tracking-[-0.05em] transition-colors duration-300 md:text-5xl ${project.accent === "lime" ? "group-hover:text-[#c7f26b] group-focus-visible:text-[#c7f26b]" : project.accent === "blue" ? "group-hover:text-[#86a8ff] group-focus-visible:text-[#86a8ff]" : "group-hover:text-[#ff6b35] group-focus-visible:text-[#ff6b35]"}`}>{project.title}</h3>
                     <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/50">{project.summary}</p>
                     <div className="mt-7 flex flex-wrap gap-2">
                       {project.stack.map((item) => <span key={item} className="rounded-full border border-white/20 bg-white/[.03] px-3 py-1.5 font-mono text-[10px] tracking-[0.1em] text-white/75 transition-colors duration-300 group-hover:border-white/35 group-hover:text-white">{item}</span>)}
@@ -146,7 +183,7 @@ export function PortfolioHome() {
                       <p className={`text-6xl font-semibold tracking-[-0.07em] ${project.accent === "lime" ? "text-[#c7f26b]" : project.accent === "blue" ? "text-[#86a8ff]" : "text-[#ff6b35]"}`}>{project.metric}</p>
                       <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.13em] text-white/55">{project.metricLabel}</p>
                     </div>
-                    <ArrowUpRight className="size-6 text-white/40 transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-white md:ml-auto md:mt-8" aria-hidden="true" />
+                    <ArrowUpRight className="size-6 text-white/40 transition-colors duration-300 group-hover:text-white group-focus-visible:text-white md:ml-auto md:mt-8" aria-hidden="true" />
                   </div>
                 </Link>
               </Reveal>
@@ -155,45 +192,10 @@ export function PortfolioHome() {
         </div>
       </section>
 
-      <section id="experience" className="scroll-mt-10 px-5 py-24 md:px-9 md:py-32">
-        <div className="mx-auto grid max-w-[1500px] gap-14 lg:grid-cols-[.68fr_1.32fr]">
-          <Reveal>
-            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.17em] text-black/55">Where I&apos;ve worked / 2024—now</p>
-            <h2 className="mt-5 text-5xl font-semibold leading-none tracking-[-0.065em] md:text-7xl">Still learning, always building.</h2>
-            <p className="mt-6 max-w-md text-base leading-relaxed text-black/60">My path has moved through research labs, classrooms, startups, and banking. Each place taught me a different part of building AI responsibly.</p>
-          </Reveal>
-          <Reveal>
-            <ol className="divide-y divide-black/20 border-y border-black/20">
-              {experience.map((item, index) => (
-                <motion.li
-                  key={item.role}
-                  initial={reduceMotion ? false : { opacity: 0, x: 18 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.35 }}
-                  transition={{ duration: reduceMotion ? 0 : 0.45, delay: reduceMotion ? 0 : index * 0.05 }}
-                  className="group grid gap-4 py-8 transition-colors duration-300 hover:bg-white/30 md:grid-cols-[140px_1fr_auto] md:items-start md:px-3"
-                >
-                  <div>
-                    <span className={`mb-3 block size-2.5 rounded-full ${index === 0 ? "bg-[#ff6b35]" : index === 1 ? "bg-[#86a8ff]" : "bg-[#77a72a]"}`} />
-                    <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.1em] text-black/60">{item.period}</p>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold tracking-[-0.025em]">{item.role}</h3>
-                    <p className="mt-1 text-sm font-medium text-black/45">{item.company}</p>
-                    <p className="mt-3 max-w-xl text-sm leading-relaxed text-black/60">{item.detail}</p>
-                  </div>
-                  <p className="max-w-[20rem] font-mono text-[10px] uppercase leading-relaxed tracking-[0.1em] text-black/55 md:text-right">{item.proof}</p>
-                </motion.li>
-              ))}
-            </ol>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="border-y border-black/15 bg-white/30 px-5 py-20 md:px-9 md:py-24">
-        <Reveal className="mx-auto grid max-w-[1500px] gap-10 lg:grid-cols-[.4fr_.6fr] lg:items-start">
+      <section className="flex min-h-[26rem] items-center border-y border-black/15 bg-white/30 px-5 py-24 md:min-h-[32rem] md:px-9 md:py-32">
+        <Reveal className="mx-auto grid w-full max-w-[1500px] gap-10 lg:grid-cols-[.25fr_.75fr] lg:items-start lg:gap-16">
           <p className="font-mono text-[11px] font-medium uppercase tracking-[0.17em] text-black/55">Something I&apos;ve learned</p>
-          <blockquote className="text-4xl font-semibold leading-[1.04] tracking-[-0.055em] md:text-6xl">
+          <blockquote className="text-balance text-[clamp(2.25rem,5.5vw,4.25rem)] font-semibold leading-[1.04] tracking-[-0.055em]">
             “I enjoy the part between a promising model and a system someone can rely on.”
           </blockquote>
         </Reveal>

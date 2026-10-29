@@ -9,6 +9,10 @@ const stages = [
   { label: "Deliver", detail: "Useful system", icon: Rocket, accent: "text-[#c7f26b]" },
 ];
 
+const signalDuration = 6;
+const signalTimes = [0, 0.06, 0.19, 0.25, 0.31, 0.44, 0.5, 0.56, 0.69, 0.75, 0.81, 0.94, 1];
+const stageHits = [[0, 1], [0.25, 0.75], [0.5]];
+
 export function SignalVisual({ compact = false }: { compact?: boolean }) {
   const reduceMotion = useReducedMotion();
 
@@ -39,12 +43,16 @@ export function SignalVisual({ compact = false }: { compact?: boolean }) {
         </div>
 
         <div className="relative my-auto py-8">
-          <div className="absolute left-[12%] right-[12%] top-1/2 h-px -translate-y-1/2 bg-white/15" />
+          <div
+            className="absolute h-px -translate-y-1/2 bg-white/15"
+            style={{ left: "16.6667%", right: "16.6667%", top: "4rem" }}
+          />
           <motion.div
             aria-hidden="true"
-            className="absolute left-[12%] top-1/2 size-2 -translate-y-1/2 rounded-full bg-[#c7f26b] shadow-[0_0_18px_4px_rgba(199,242,107,.45)]"
-            animate={reduceMotion ? undefined : { left: ["12%", "49%", "86%"] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#c7f26b] shadow-[0_0_18px_4px_rgba(199,242,107,.45)]"
+            style={{ left: "16.6667%", top: "4rem" }}
+            animate={reduceMotion ? undefined : { left: ["16.6667%", "50%", "83.3333%", "50%", "16.6667%"] }}
+            transition={{ duration: signalDuration, repeat: Infinity, ease: "easeInOut", times: [0, 0.25, 0.5, 0.75, 1] }}
           />
           <div className="relative grid grid-cols-3 gap-3">
             {stages.map((stage, index) => {
@@ -53,8 +61,14 @@ export function SignalVisual({ compact = false }: { compact?: boolean }) {
                 <div key={stage.label} className="flex flex-col items-center text-center">
                   <motion.div
                     className="grid size-14 place-items-center rounded-2xl border border-white/15 bg-[#161a22] shadow-[0_12px_30px_rgba(0,0,0,.22)] sm:size-16"
-                    animate={reduceMotion ? undefined : { y: [0, -4, 0] }}
-                    transition={{ duration: 3.2, repeat: Infinity, delay: index * 0.45, ease: "easeInOut" }}
+                    animate={reduceMotion ? undefined : {
+                      scale: signalTimes.map((time) => stageHits[index].includes(time) ? 1.08 : 1),
+                      borderColor: signalTimes.map((time) => stageHits[index].includes(time) ? "rgba(199,242,107,.75)" : "rgba(255,255,255,.15)"),
+                      boxShadow: signalTimes.map((time) => stageHits[index].includes(time)
+                        ? "0 0 0 5px rgba(199,242,107,.12), 0 0 26px rgba(199,242,107,.28)"
+                        : "0 12px 30px rgba(0,0,0,.22)"),
+                    }}
+                    transition={{ duration: signalDuration, repeat: Infinity, ease: "linear", times: signalTimes }}
                   >
                     <Icon className={`size-5 ${stage.accent}`} aria-hidden="true" />
                   </motion.div>
