@@ -221,6 +221,12 @@ export function PortfolioHome() {
         </Reveal>
         <div className="mx-auto mt-20 flex max-w-[1500px] flex-wrap justify-between gap-3 border-t border-white/15 pt-5 font-mono text-[10px] uppercase tracking-[0.14em] text-white/50">
           <span>{site.name} © 2026</span>
+          <span>
+            Visual style inspired by{" "}
+            <a href="https://zenless.hoyoverse.com/" target="_blank" rel="noreferrer" className="underline underline-offset-4 transition hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#c7f26b]">
+              Zenless Zone Zero
+            </a>
+          </span>
           <span>Human judgment / Machine intelligence</span>
         </div>
       </footer>
